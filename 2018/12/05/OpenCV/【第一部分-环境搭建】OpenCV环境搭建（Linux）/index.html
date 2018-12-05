@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Times New Roman:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OpenCV,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.1源码方式安装OpenCV1.1.1安装OpenCV使用OpenCV-3.1.0和Python3环境搭建步骤 步骤0：打开终端，我们先更新和升级已安装的软件包，然后更新Raspberry Pi固件。sudo apt-get updatesudo apt-get upgrade等待一段时间后，更新结束，如果你的Linux长时间没有更新，该部分耗时较久。步骤1：安装所需的工具和库，笔者在这里一个命">
+<meta name="keywords" content="OpenCV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【第一部分-环境搭建】OpenCV环境搭建（Linux）">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/index.html">
+<meta property="og:site_name" content="BruceOu的博客">
+<meta property="og:description" content="1.1源码方式安装OpenCV1.1.1安装OpenCV使用OpenCV-3.1.0和Python3环境搭建步骤 步骤0：打开终端，我们先更新和升级已安装的软件包，然后更新Raspberry Pi固件。sudo apt-get updatesudo apt-get upgrade等待一段时间后，更新结束，如果你的Linux长时间没有更新，该部分耗时较久。步骤1：安装所需的工具和库，笔者在这里一个命">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图5.png">
+<meta property="og:updated_time" content="2018-07-13T04:42:09.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【第一部分-环境搭建】OpenCV环境搭建（Linux）">
+<meta name="twitter:description" content="1.1源码方式安装OpenCV1.1.1安装OpenCV使用OpenCV-3.1.0和Python3环境搭建步骤 步骤0：打开终端，我们先更新和升级已安装的软件包，然后更新Raspberry Pi固件。sudo apt-get updatesudo apt-get upgrade等待一段时间后，更新结束，如果你的Linux长时间没有更新，该部分耗时较久。步骤1：安装所需的工具和库，笔者在这里一个命">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/【第一部分-环境搭建】OpenCV环境搭建（Linux）/图1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/">
+
+
+
+
+
+  <title>【第一部分-环境搭建】OpenCV环境搭建（Linux） | BruceOu的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BruceOu的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/OpenCV/【第一部分-环境搭建】OpenCV环境搭建（Linux）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BruceOu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BruceOu的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【第一部分-环境搭建】OpenCV环境搭建（Linux）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T10:16:47+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenCV/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenCV</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-1源码方式安装OpenCV"><a href="#1-1源码方式安装OpenCV" class="headerlink" title="1.1源码方式安装OpenCV"></a>1.1源码方式安装OpenCV</h2><p><strong>1.1.1安装OpenCV</strong><br><strong>使用OpenCV-3.1.0和Python3环境搭建步骤</strong></p>
+<font color="#00D700" size="4" face="黑体">步骤0：</font><br>打开终端，我们先更新和升级已安装的软件包，然后更新Raspberry Pi固件。<br><pre>sudo apt-get update<br>sudo apt-get upgrade</pre><br>等待一段时间后，更新结束，如果你的Linux长时间没有更新，该部分耗时较久。<br><br><font color="#00D700" size="4" face="黑体">步骤1：</font><br>安装所需的工具和库，笔者在这里一个命令完成上面的很多步骤，请读者朋友注意对比。<br><pre>sudo apt-get install build-essential cmake pkg-config libjasper-dev libpng12-dev libjpeg-dev libpng-dev libtiff-dev libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libatlas-base-dev gfortran libjasper-dev libdc1394-22-dev python-dev python-numpy</pre><br><br><font color="#00D700" size="4" face="黑体">步骤2：</font><br>下载和解压OpenCV：<br><pre>sudo wget -O opencv-3.1.0.zip <a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.1.0/opencv-3.1.0.zip/download" target="_blank" rel="noopener">http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.1.0/opencv-3.1.0.zip/download</a></pre><br>【注1】直接下载可能比较慢，读者朋友可以直接到官网去下载源码，再用U盘拷贝到linux中或使用FTP等下载。<br>链接：<a href="https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/" target="_blank" rel="noopener">https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/</a><br>【注2】最新的版本版本是3.3.1，读者朋友只需把3.1.0换成3.3.1即可，其他都是一样的。<br><pre>sudo unzip opencv-3.1.0.zip<br>cd opencv-3.1.0</pre><br>安装：<br><pre>sudo mkdir build<br>cd build<br>sudo cmake  -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_NEW_PYTHON_SUPPORT=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON  -D BUILD_TBB=ON  –D WITH_TBB=ON ..</pre><br>编译OpenCV：<br><pre>sudo make</pre><br>最后，我们安装OpenCV：<br><pre>sudo make install</pre><br>更新搜索动态链接库<br><pre>sudo ldconfig</pre><br><br><strong>1.1.2测试程序</strong><br><br>【C++】——通过代码载入一张图片，通过opencv把彩色图片转换为黑白图片，并把原图和转换后的图片输出到屏幕中。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">/**Includes*********************************************************************/</span><br><span class="line">#include &lt;opencv2/core/core.hpp&gt;  </span><br><span class="line">#include &lt;opencv2/imgproc/imgproc.hpp&gt;  </span><br><span class="line">#include &lt;opencv2/highgui/highgui.hpp&gt;  </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"></span><br><span class="line">/**namespace********************************************************************/ </span><br><span class="line">using namespace cv;  </span><br><span class="line">using namespace std;  </span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">  * @brief     主函数</span><br><span class="line">  * @param     argc 命令行参数个数</span><br><span class="line">               argv 命令行参数</span><br><span class="line">  * @retval    int</span><br><span class="line">  */</span><br><span class="line">int main (int argc, char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    Mat image, image_gray;  </span><br><span class="line">    </span><br><span class="line">	//读取图片</span><br><span class="line">	image = imread(argv[1], CV_LOAD_IMAGE_COLOR );  </span><br><span class="line">    if (argc != 2 || !image.data) </span><br><span class="line">    &#123;  </span><br><span class="line">        cout &lt;&lt; &quot;No image data\n&quot;;  </span><br><span class="line">        return -1;  </span><br><span class="line">    &#125;  </span><br><span class="line">     </span><br><span class="line">    cvtColor(image, image_gray, CV_RGB2GRAY);  </span><br><span class="line">    </span><br><span class="line">	//创建显示窗口</span><br><span class="line">	namedWindow(&quot;image&quot;,CV_WINDOW_AUTOSIZE);  </span><br><span class="line">    namedWindow(&quot;image gray&quot;,CV_WINDOW_AUTOSIZE);  </span><br><span class="line">     </span><br><span class="line">	//显示图片</span><br><span class="line">    imshow(&quot;image&quot;, image);  </span><br><span class="line">    imshow(&quot;image gray&quot;, image_gray);  </span><br><span class="line">     </span><br><span class="line">    waitKey(0);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>【makefile】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">INCLUDE = $(shell pkg-config --cflags opencv)  </span><br><span class="line">LIBS = $(shell pkg-config --libs opencv)  </span><br><span class="line">SOURCES = test.cpp  </span><br><span class="line"> # 目标文件  </span><br><span class="line">OBJECTS = $(SOURCES:.cpp=.o)  </span><br><span class="line"> # 可执行文件  </span><br><span class="line">TARGET = test  </span><br><span class="line">$(TARGET):$(OBJECTS)  </span><br><span class="line">	 g++ -o $(TARGET) $(OBJECTS) -I $(INCLUDE) $(LIBS)  </span><br><span class="line">$(OBJECTS):$(SOURCES)  </span><br><span class="line">	g++ -c $(SOURCES)  </span><br><span class="line">clean:  </span><br><span class="line">	rm $(OBJECTS) $(TARGET)  </span><br><span class="line"># 编译规则 $@代表目标文件 $&lt; 代表第一个依赖文件  </span><br><span class="line">%.o:%.cpp  </span><br><span class="line">	g++ -I $(INCLUDE) -o $@ -c $&lt;</span><br></pre></td></tr></table></figure><br><br>【简要说明】<br>通过pkg-config –cflags opencv 获得opencv相关头文件路径，通过pkg-config –libs opencv获得opencv扩展库<br>【编译并执行】<br><pre>make</pre><br><pre>./test raspberry.jpg</pre><br>示例中载入一张名为raspberry.jpg图片。在该示例中，图片和可执行文件test应在同一个目录中。<br><br>## 1.2 apt方式安装OpenCV<br><strong>1.2.1安装OpenCV</strong><br><br>读者也许认为前文的方法比较麻烦，很不容易安装成功，接下来笔者将介绍如何在树莓派中通过apt方式安装OpenCV。相比于源代码方式安装OpenCV，通过apt方式安装过程步骤简单些，消耗的时间也少一些。通过apt方式安装没有自动生成opencv.pc文件，所以在编写makefile文件时不能直接使用pkg-config工具，而需要逐个指定opencv_core、opencv_imgproc等动态链接库。这也是它的劣势所在。<br>开始之前进行必要的更新工作。<br><br><pre>sudo apt-get update</pre><br>安装源码库。<br><pre>sudo apt-get install libcv-dev</pre><br> 安装过程比较缓慢，请耐心等待。安装结束后，可以在/usr/include目录下opencv和opencv2下查看opencv相关的头文件(.h)，这个是树莓派中默认头文件路径。<br><br><center><img src="【第一部分-环境搭建】OpenCV环境搭建（Linux）/图1.png" alt="这里写图片描述"></center><br><center>图1-1</center><br>opencv的相关动态链接库包括：<br><font color="#00D700" size="4" face="黑体">【opencv_calib3d】——相机校准和三维重建<br>【opencv_core】——核心模块，绘图和其他辅助功能<br>【opencv_features2d】——二维特征检测<br>【opencv_flann】——快速最邻近搜索<br>【opencv_highgui】——GUI用户界面<br>【opencv_imgproc】——图像处理<br>【opencv_legacy】——废弃部分<br>【opencv_ml】——机器学习模块<br>【opencv_objdetect】——目标检测模块<br>【opencv_ocl】——运用OpenCL加速的计算机视觉组件模块<br>【opencv_video】——视频分析组件</font>
+
+<p><strong>1.2.2测试程序</strong><br>【参考附件/apt-get方式】<br>【C++】——通过代码载入一张图片，通过opencv把彩色图片转换为黑白图片，并把原图和转换后的图片输出到屏幕中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/**Includes*********************************************************************/</span><br><span class="line">#include &lt;opencv2/core/core.hpp&gt;</span><br><span class="line">#include &lt;opencv2/imgproc/imgproc.hpp&gt;</span><br><span class="line">#include &lt;opencv2/highgui/highgui.hpp&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">/**namespace********************************************************************/</span><br><span class="line">using namespace cv;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">  * @brief     主函数</span><br><span class="line">  * @param     argc 命令行参数个数</span><br><span class="line">               argv 命令行参数</span><br><span class="line">  * @retval    int</span><br><span class="line">  */</span><br><span class="line">int main(int argc,char **argv)</span><br><span class="line">&#123;</span><br><span class="line">	Mat image ,image_gray;</span><br><span class="line">	</span><br><span class="line">	//读取图片</span><br><span class="line">	image = imread(argv[1],CV_LOAD_IMAGE_COLOR);</span><br><span class="line">	if(argc != 2 || !image.data)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt;&quot;No image data\n&quot;;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	cvtColor(image,image_gray,CV_RGB2GRAY);</span><br><span class="line">	</span><br><span class="line">	//创建显示窗口</span><br><span class="line">	namedWindow(&quot;image&quot;,CV_WINDOW_AUTOSIZE);</span><br><span class="line">	namedWindow(&quot;image gray&quot;,CV_WINDOW_AUTOSIZE);  </span><br><span class="line">     </span><br><span class="line">	//显示图片</span><br><span class="line">    imshow(&quot;image&quot;, image);  </span><br><span class="line">    imshow(&quot;image gray&quot;, image_gray);  </span><br><span class="line">     </span><br><span class="line">    waitKey(0);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>【makefile】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CC = g++  </span><br><span class="line"># 可执行文件  </span><br><span class="line">TARGET = test  </span><br><span class="line"># C文件  </span><br><span class="line">SRCS = test.cpp  </span><br><span class="line"># 目标文件  </span><br><span class="line">OBJS = $(SRCS:.cpp=.o)  </span><br><span class="line"># 库文件  </span><br><span class="line">DLIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui  </span><br><span class="line"># 链接为可执行文件  </span><br><span class="line">$(TARGET):$(OBJS)  </span><br><span class="line"> $(CC) -o $@ $^ $(DLIBS)  </span><br><span class="line">clean:  </span><br><span class="line">	rm -rf $(TARGET) $(OBJS)  </span><br><span class="line"># 编译规则 $@代表目标文件 $&lt; 代表第一个依赖文件  </span><br><span class="line">%.o:%.cpp  </span><br><span class="line">$(CC) -o $@ -c $&lt;</span><br></pre></td></tr></table></figure></p>
+<p>【简单说明】<br>DLIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui<br>示例中使用了opencv中的核心部分、图像处理部分和GUI部分，所以依次增加opencv_core、opencv_imgproc、opencv_highgui动态链接库。该部分和和【树莓派学习笔记——源代码方式安装opencv】中的示例稍有不同，前文中的makefile使用LIBS = $(shell pkg-config –libs opencv)引入所有的opencv动态链接库，此处手动指定相关库按需链接。<br>【编译】</p>
+<p><pre>make</pre><br>【执行】</p>
+<p><pre>./test image.jpg</pre><br>可执行文件test和image.jpg应在同一个目录中。</p>
+<h2 id="1-3-OpenCV-整体结构"><a href="#1-3-OpenCV-整体结构" class="headerlink" title="1.3 OpenCV 整体结构"></a>1.3 OpenCV 整体结构</h2><p>上文讲解了OpenCV的安装，也相应给出了简单的例子。在具体学习OpenCV的具体功能块之前，我们先来看看OpenCV源码的整体框架，这样也能方便我们在后面的学习中获得更加清晰的思路。</p>
+<p><strong>1.3.1文件结构</strong><br>要了解整体框架，切入点在于opencv/build目录下的include文件夹，因为这下面包含了OpenCV源码所有的头文件。include下面有两个文件夹：opencv和opencv2：</p>
+<center> <img src="【第一部分-环境搭建】OpenCV环境搭建（Linux）/图2.png" alt="这里写图片描述"></center><br><center>图1-2</center><br>不难看出，opencv中存放的是旧版中保留的部分OpenCV的头文件，而opencv2中包含的则是改版之后的OpenCV2的各种头文件。<br><br><font color="#00D700" size="4" face="黑体">1.opencv文件目录：</font><br><center> <img src="【第一部分-环境搭建】OpenCV环境搭建（Linux）/图3.png" alt="这里写图片描述"></center><br><center>图1-3</center><br><font color="#00D700" size="4" face="黑体">2.opencv2文件目录：</font><br><center> <img src="【第一部分-环境搭建】OpenCV环境搭建（Linux）/图4.png" alt="这里写图片描述"></center><br><center>图1-4</center><br>在这个文件夹下面，我们可以看到很多子文件目录，这些目录都是按照功能模块进行头文件整合，相同功能块的放在同一子目录下面，其中opencv_modules.hpp这个头文件中，定义了opencv2中所有模块的宏：<br><center> <img src="【第一部分-环境搭建】OpenCV环境搭建（Linux）/图5.png" alt="这里写图片描述"></center><br><center>图1-5</center>
+
+<p><strong>1.3.2功能模块</strong><br>上面的介绍中我们介绍文件结构的同时，其实也说到了opencv2中的每个子文件夹就对应一个功能模块，那么我们接下来就看看每个功能模块的具体作用，标红为最常用的库文件：</p>
+<font color="#00D700" size="4" face="黑体">1、【calib3d】——其实就是就是Calibration（校准）加3D这两个词的组合缩写。这个模块主要是相机校准和三维重建相关的内容。基本的多视角几何算法，单个立体摄像头标定，物体姿态估计，立体相似性算法，3D信息的重建等等。<br><br> 2、【core】——核心功能模块，包含如下内容：<br><font color="#00D700" size="4" face="黑体">    OpenCV基本数据结构<br>    动态数据结构<br>    绘图函数<br>    数组操作相关函数<br>    辅助功能与系统函数和宏<br>    与OpenGL的互操作</font>
+
+<p>3、【imgproc】——Image和Processing这两个单词的缩写组合。图像处理模块，这个模块包含了如下内容：</p>
+<font color="#00D700" size="4" face="黑体">    线性和非线性的图像滤波<br>    图像的几何变换<br>    其它（Miscellaneous）图像转换<br>    直方图相关<br>    结构分析和形状描述<br>    运动分析和对象跟踪<br>    特征检测<br>    目标检测等内容</font>
+
+<p>4、【features2d】 ——也就是Features2D， 2D功能框架 ，包含如下内容：</p>
+<font color="#00D700" size="4" face="黑体">    特征检测和描述<br>    特征检测器（Feature Detectors）通用接口<br>    描述符提取器（Descriptor Extractors）通用接口<br>    描述符匹配器（Descriptor Matchers）通用接口<br>    通用描述符（Generic Descriptor）匹配器通用接口<br>    关键点绘制函数和匹配功能绘制函数</font>
+
+<p>5、【flann】—— Fast Library for Approximate Nearest Neighbors，高维的近似近邻快速搜索算法库，包含两个部分：</p>
+<font color="#00D700" size="4" face="黑体">    快速近似最近邻搜索<br>    聚类</font><br>6、【gpu】——运用GPU加速的计算机视觉模块<br>7、【highgui】——也就是high gui，高层GUI图形用户界面，包含媒体的I / O输入输出，视频捕捉、图像和视频的编码解码、图形交互界面的接口等内容<br> 8、【ml】——Machine Learning，机器学习模块， 基本上是统计模型和分类算法，包含如下内容：<br><font color="#00D700" size="4" face="黑体">    统计模型 （Statistical Models）<br>    一般贝叶斯分类器 （Normal Bayes Classifier）<br>    K-近邻 （K-NearestNeighbors）<br>    支持向量机 （Support Vector Machines）<br>    决策树 （Decision Trees）<br>    提升（Boosting）<br>    梯度提高树（Gradient Boosted Trees）<br>    随机树 （Random Trees）<br>    超随机树 （Extremely randomized trees）<br>    期望最大化 （Expectation Maximization）<br>    神经网络 （Neural Networks）<br>    MLData</font>
+
+<p>9、【objdetect】——目标检测模块，包含Cascade Classification（级联分类）和Latent SVM这两个部分。<br>10、【photo】——也就是Computational Photography，包含图像修复和图像去噪两部分<br>11、【stitching】——images stitching，图像拼接模块，包含如下部分：</p>
+<font color="#00D700" size="4" face="黑体">    拼接流水线<br>    特点寻找和匹配图像<br>    估计旋转<br>    自动校准<br>    图片歪斜<br>    接缝估测<br>    曝光补偿<br>    图片混合</font>
+
+<p>12、【superres】——SuperResolution，超分辨率技术的相关功能模块<br>13、【ts】——opencv测试相关代码，不用去管他<br>14、【video】——视频分析组件，该模块包括运动估计，背景分离，对象跟踪等视频处理相关内容。<br>15、【Videostab】——Video stabilization，视频稳定相关的组件，官方文档中没有多作介绍，不管它了。</p>
+<p>以上就是OpenCV的大体模块，笔者在这里列出的是3.1.0和3.0.0共同所拥有的，总之大体相同，要想深入研究的读者请自行对比吧。看到这里，相信大家已经对OpenCV的模块架构设计有了一定的认识。另外OpenCV的参考例程也是这样分块的。</p>
+<font color="#D70000" size="4" face="黑体">【注】笔者树莓派（Linux操作系统）用的3.1.0，PC端用的是3.0.0，经过笔者比较，二者区别不大，在后文中有区别的地方笔者会特别指出。</font>
+</font>
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="BruceOu wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="BruceOu WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="BruceOu Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/Hexo/第5章 Hexo图片显示问题/" rel="next" title="第5章 Hexo图片显示问题">
+                <i class="fa fa-chevron-left"></i> 第5章 Hexo图片显示问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/OpenCV/【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows）/" rel="prev" title="【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows）">
+                【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzMzMC8xMzg2NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BruceOu">
+            
+              <p class="site-author-name" itemprop="name">BruceOu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ouxiaolong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u013162035" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.bruceou.cn/" target="_blank" title="BruceOu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>BruceOu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/Bruceoxl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bruceou.coding.me/" title="BruceOu的Coding博客" target="_blank">BruceOu的Coding博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1源码方式安装OpenCV"><span class="nav-number">1.</span> <span class="nav-text">1.1源码方式安装OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-OpenCV-整体结构"><span class="nav-number">2.</span> <span class="nav-text">1.3 OpenCV 整体结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018-06 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BruceOu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65894410";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

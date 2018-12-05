@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Times New Roman:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="TensorFlow,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="笔者主要从事图像的识别与分类研究，在这里笔者值探讨卷积神经的发展史。 1.BP1985年，Rumelhart和Hinton等人提出了后向传播（Back Propagation，BP）算法（也有说1986年的，指的是他们另一篇paper：Learning representations by back-propagating errors)，使得神经网络的训练变得简单可行，这篇文章在Google S">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络架构发展史（CNN）">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/index.html">
+<meta property="og:site_name" content="BruceOu的博客">
+<meta property="og:description" content="笔者主要从事图像的识别与分类研究，在这里笔者值探讨卷积神经的发展史。 1.BP1985年，Rumelhart和Hinton等人提出了后向传播（Back Propagation，BP）算法（也有说1986年的，指的是他们另一篇paper：Learning representations by back-propagating errors)，使得神经网络的训练变得简单可行，这篇文章在Google S">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图5.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图6.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图7.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图8.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图9.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图10.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图11.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图12.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图13.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图14.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图15.png">
+<meta property="og:updated_time" content="2018-07-11T03:08:58.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="神经网络架构发展史（CNN）">
+<meta name="twitter:description" content="笔者主要从事图像的识别与分类研究，在这里笔者值探讨卷积神经的发展史。 1.BP1985年，Rumelhart和Hinton等人提出了后向传播（Back Propagation，BP）算法（也有说1986年的，指的是他们另一篇paper：Learning representations by back-propagating errors)，使得神经网络的训练变得简单可行，这篇文章在Google S">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/神经网络架构发展史/图2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/">
+
+
+
+
+
+  <title>神经网络架构发展史（CNN） | BruceOu的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BruceOu的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BruceOu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BruceOu的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">神经网络架构发展史（CNN）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T10:16:47+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>笔者主要从事图像的识别与分类研究，在这里笔者值探讨卷积神经的发展史。</p>
+<h2 id="1-BP"><a href="#1-BP" class="headerlink" title="1.BP"></a>1.BP</h2><p>1985年，<strong>Rumelhart和Hinton</strong>等人提出了后向传播（Back Propagation，BP）算法（也有说1986年的，指的是他们另一篇paper：<font face="黑体" seize="4" color="#DD0000">Learning representations by back-propagating errors</font>)，使得神经网络的训练变得简单可行，这篇文章在Google Scholar上的引用次数达到了19000多次，目前还是比Cortes和Vapnic的Support-Vector Networks稍落后一点，不过以Deep Learning最近的发展劲头来看，超越指日可待。</p>
+<p>【注】BP虽然不算卷积神经网络，但它是神经网络的老前辈，学习神经网络不得不知道的一个网络啊。<br><a href="http://www.cs.toronto.edu/~hinton/" target="_blank" rel="noopener">Hinton主页</a></p>
+<h2 id="2-LeNet5"><a href="#2-LeNet5" class="headerlink" title="2.LeNet5"></a>2.LeNet5</h2><p>1988年，<strong>LeCun</strong>在BP网络的基础上发表了“<font face="黑体" seize="4" color="#DD0000">A theoretical framework for Back-Propagation</font>”几年后，LeCun利用BP算法来训练多层神经网络用于识别手写邮政编码，（论文：<font face="黑体" seize="4" color="#DD0000">Handwritten Digit Recognition: Applications of Neural Net Chips and Automatic Learning</font>）这个工作也可以说是就是CNN的开山之作，多处用到了5<em>5的卷积核，但在这篇文章中LeCun只是说把5</em>5的相邻区域作为感受野，并未提及卷积或卷积神经网络。在随后很多年，LeCun不断优化，发表了很多关于手写识别的文章。</p>
+<p>1994年，<font face="黑体" seize="4" color="#DD0000">word-level training of a handwritten word recognizer based on convolutional neural networks</font>发表，这可以说是最早的卷积神经网络之一， 并且推动了深度学习领域的发展。自从1988年开始，在许多次成功的迭代后，这项由Yann LeCun完成的开拓性成果被命名为LeNet5（参见：<font face="黑体" seize="4" color="#DD0000">Gradient-Based Learning Applied to Document Recognition</font>）.</p>
+<p>1998年的LeNet5标注着CNN的真正面世，但是这个模型在后来的一段时间并未能火起来，主要原因是要求机器性能较好，而且其他的算法像SVM也能达到类似的效果甚至超过。</p>
+<p>LeNet5的架构基于这样的观点：（尤其是）图像的特征分布在整张图像上，以及带有可学习参数的卷积是一种用少量参数在多个位置上提取相似特征的有效方法。在那时候，没有GPU帮助训练，甚至CPU的速度也很慢。因此，能够保存参数以及计算过程是一个关键的进展。这和将每个像素用作一个大型多层神经网络的单独输入相反。LeNet5阐述了那些像素不应该被使用在第一层，因为图像具有很强的空间相关性，而使用图像中独立的像素作为不同的输入特征则利用不到这些相关性。<br>LeNet5特征能够总结为如下几点：</p>
+<font face="黑体" seize="4" color="#0000DD">1）卷积神经网络使用三个层作为一个系列： 卷积，池化，非线性；<br>2）使用卷积提取空间特征；<br>3）使用映射到空间均值下采样（subsample）；<br>4）双曲线（tanh）或S型（sigmoid）形式的非线性；<br>5）多层神经网络（MLP）作为最后的分类器；<br>6）层与层之间的稀疏连接矩阵避免大的计算成本。</font>
+
+<p>总体看来，这个网络是最近大量神经网络架构的起点，并且也给这个领域带来了许多灵感。<br>  <center><img src="神经网络架构发展史/图2.png" alt="这里写图片描述"> </center></p>
+<p>【注】以上提及的文章均可在LeCun的主页中找到。</p>
+<p><a href="http://yann.lecun.com/" target="_blank" rel="noopener">LeCun主页</a><br><a href="http://yann.lecun.com/exdb/publis/" target="_blank" rel="noopener">LeCun论文下载地址</a></p>
+<p>从1998年到2010年，神经网络处于孵化阶段，大多数人没有意识到他们不断增强的力量，与此同时其他研究者则进展缓慢。由于手机相机以及便宜的数字相机的出现，越来越多的数据可被利用。并且计算能力也在成长，CPU变得更快，GPU变成了多种用途的计算工具。这些趋势使得神经网络有所进展，虽然速度很慢，数据和计算能力使得神经网络能够完成的任务越来越有趣，之后一切变得清晰起来。</p>
+<h2 id="3-Dan-Ciresan-Net"><a href="#3-Dan-Ciresan-Net" class="headerlink" title="3.Dan Ciresan Net"></a>3.Dan Ciresan Net</h2><p>2010 年的时候，<strong>Dan Claudiu Ciresan 和 Jurgen Schmidhuber </strong>发布了最早的 GPU 神经网络的一个实现。这个实现是在一块 NVIDIA GTX 280 图形处理器上运行 9 层的神经网络，包含前向与反向传播。</p>
+<p>2010年Dan Claudiu Ciresan和Jurgen Schmidhuber发表了一个GPU神经网络（<font face="黑体" seize="4" color="#DD0000">Deep Big Simple Neural Nets Excel on Handwritten Digit Recognition</font>）。论文里面证明了使用 NVIDIA GTX 280 GPU之后能够处理高达9层的神经网络。</p>
+<p>从此之后，Nvidia公司的股价开始不断攀升，深度学习也越来越为人们所熟知。</p>
+<p><a href="https://arxiv.org/abs/1003.0358" target="_blank" rel="noopener">论文地址</a><br><a href="https://www.nvidia.com/content/cuda/spotlights/dan-ciresan-idsia.html" target="_blank" rel="noopener">Dan Claudiu Ciresan 地址</a></p>
+<h2 id="4-AlexNet"><a href="#4-AlexNet" class="headerlink" title="4. AlexNet"></a>4. AlexNet</h2><p>2012年，<strong>Alex Krizhevsky</strong>发表了AlexNet（参见<font face="黑体" seize="4" color="#DD0000"> ImageNet Classification with Deep Convolutional Neural Networks</font>），它是LeNet的一种更深更宽的版本，并以显著的优势赢得了困难的ImageNet竞赛。</p>
+<p>AlexNet是在2012年被发表的一个经典之作，并在当年取得了ImageNet最好的成绩，也是在那年之后，更多的更深的神经网络被提出，其官方提供的数据模型。</p>
+<p>AlexNet 将LeNet的思想扩展到了更大的能学习到更复杂的对象层次的神经网络上。这项工作的贡献有：</p>
+<font face="黑体" seize="4" color="#00DD00">1）使用修正的非线性单元（ReLU）<br>2）在训练的时候使用Dropout技术有选择的忽视单个神经元，从而避免过拟合<br>3）覆盖进行最大池化，避免平均池化的平均化效果。<br>4）使用GPU NVIDIA GTX580减少训练时间</font>
+
+<p>在那时， GPU比CPU提供更多数量的核，训练时间可以提升10倍。这又反过来允许使用更大的数据集和更大的图像。</p>
+<p>AlexNet的成功掀起了一场小革命。卷积神经网络现在是深度学习的骨干。它已经变成了现在能够解决有用任务的大型神经网络的代名词。</p>
+  <center><img src="神经网络架构发展史/图4.png" alt="这里写图片描述"> </center>
+
+<p><a href="http://www.cs.toronto.edu/~kriz/index.html" target="_blank" rel="noopener">Alex Krizhevsky主页及论文下载地址1</a><br><a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks" target="_blank" rel="noopener">Alex Krizhevsky主页及论文下载地址2</a></p>
+<h2 id="5-ZF-Net"><a href="#5-ZF-Net" class="headerlink" title="5.ZF Net"></a>5.ZF Net</h2><p>2013 ILSVRC比赛冠军，结构相对于AlexNet无太大的变化，只是进行了参数的优化。使用Relu激活函数，交叉熵代价函数。</p>
+  <center><img src="神经网络架构发展史/图5.png" alt="这里写图片描述"> </center>
+
+<p><a href="http://dblp.uni-trier.de/pers/hd/z/Zeiler:Matthew_D=" target="_blank" rel="noopener">Matthew D. Zeiler论文下载</a><br><a href="https://cs.nyu.edu/~fergus/pmwiki/pmwiki.php" target="_blank" rel="noopener">Rob Fergus主页</a></p>
+<h2 id="6-Overfeat"><a href="#6-Overfeat" class="headerlink" title="6.Overfeat"></a>6.Overfeat</h2><p>2013年12月， 纽约大学的<strong>Yann LeCun</strong>实验室提出了AlexNet的衍生–Overfeat（参见： <font face="黑体" seize="4" color="#DD0000">OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</font>）. 这篇文章也提过了学习边界框（learning bounding box），并导致之后出现了很多研究同一主题的论文。<br>  <center><img src="神经网络架构发展史/图6.png" alt="这里写图片描述"> </center><br><a href="http://yann.lecun.com/exdb/publis/pdf/sermanet-iclr-14.pdf" target="_blank" rel="noopener">论文地址</a></p>
+<h2 id="7-VGG-Net"><a href="#7-VGG-Net" class="headerlink" title="7.VGG-Net"></a>7.VGG-Net</h2><p>2014年，来自牛津大学的VGG网络（参见： <font face="黑体" seize="4" color="#DD0000">Very Deep Convolutional Networks for Large-Scale Image Recognition</font>）是第一个在各个卷积层使用更小的3*3过滤器（filter），并把他们组合成为一个卷积序列进行处理的网络。</p>
+<p>这看起来和LeNet的原理相反，即使用大的卷积来获得一张图像中相似的特征。和AlexNet的99或1111过滤器不同，VGG的过滤器很小，离LeNet竭力所要避免的臭名昭著的11的卷积异常接近–至少在该网络的第一层是这样。但是VGG巨大的进展是通过依次采用多个33的卷积，能够模仿出更大的感受野（receptive field）的效果，例如55或77.这些思想也被用在了最近的更多的网络架构上。如Inception与ResNet。<br>VGG网络使用多个33卷积层去表征复杂特征。如果VGG-E的第3，4，5块（block）：256256 和 512512个33过滤器被依次使用多次，以提取更多复杂特征以及这些特征的组合。其效果就等于一个带有3个卷积层的大型的512*512分类器。这显然意味着大量的参数和学习能力。但是这些网络训练困难，必须划分到较小的网络，并逐层累加。这是因为缺少强大的方式对模型进行正则化，这样或多或少约束大量由于大量参数增长的搜索空间。</p>
+<p>VGG在许多层中都使用大特征尺寸，因为推断（inference）在运行时是相当耗费时间。正如Inception的瓶颈那样，减少特征的数量将节省一些计算成本。</p>
+<p>VGG-Net 在ILSVRC localization and classification 两个问题上分别取得了第一名和第二名，VGG-Net不同于AlexNet的地方是：VGG-Net使用更多的层，通常有16－19层，而AlexNet只有8层。另外一个不同的地方是：VGG-Net的所有 convolutional layer 使用同样大小的 convolutional filter，大小为 3 x 3。</p>
+  <center><img src="神经网络架构发展史/图7.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD00">目前VGG有6个版本。</font>
+
+<p><a href="http://www.robots.ox.ac.uk/~az/" target="_blank" rel="noopener">Andrew Zisserman主页</a><br><a href="http://www.robots.ox.ac.uk/~karen/" target="_blank" rel="noopener">Karen Simonyan主页</a></p>
+<p><a href="https://arxiv.org/abs/1409.1556v1" target="_blank" rel="noopener">论文地址1</a><br><a href="http://www.robots.ox.ac.uk/~vgg/publications/2015/Simonyan15/" target="_blank" rel="noopener">论文地址2</a></p>
+<h2 id="8-NIN"><a href="#8-NIN" class="headerlink" title="8.NIN"></a>8.NIN</h2><p>网络中的网络（NiN，参见论文： <font face="黑体" seize="4" color="#DD0000">Network in Network</font>）的思路简单又伟大： 使用1*1卷积为卷积层的特征提供更组合型的能力。</p>
+<p>NiN架构在各个卷积之后使用空间MLP层，以便更好地在其它层之前组合特征。同样，你可以认为11卷积与LeNet最初的原理相悖，但是事实上他们可以以一种更好的方式组合卷积特征，而这时不可能通过简单的堆叠更多的卷积特征做到的。这和使用原始像素作为下一层输入是有区别的。其中11卷积常常被用于在卷积之后的特征映射上对特征进行空间组合，所以它们实际上可以使用非常少的参数，并在这些特征上的所有像素上共享。</p>
+<p>MLP的能力是通过将卷积特征组合到更复杂的组（group）来极大地增强单个卷积特征的有效性。这个想法之后被用到一些最近的框架上，例如ResNet，Inception及其衍生技术。</p>
+<p>NiN也使用了平均池化层作为最后分类器的一部分，这是另一种将会变得常见的实践。这是用过在分类之前对网络针对多个输入图像的响应进行平均完成的。</p>
+  <center><img src="神经网络架构发展史/图8.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD0000">NIN目前有3个版本。</font>
+
+<p><a href="https://arxiv.org/abs/1312.4400v1" target="_blank" rel="noopener">论文地址</a></p>
+<h2 id="9-R-CNN、Fast-R-CNN、Faster-R-CNN"><a href="#9-R-CNN、Fast-R-CNN、Faster-R-CNN" class="headerlink" title="9. R-CNN、Fast R-CNN、Faster R-CNN"></a>9. R-CNN、Fast R-CNN、Faster R-CNN</h2><p>RCNN（Regions with CNN features）是将CNN方法应用到目标检测问题上的一个里程碑，由年轻有为的RBG大神提出，借助CNN良好的特征提取和分类性能，通过RegionProposal方法实现目标检测问题的转化。<br>各个论文均可在Ross Girshick主页找到。</p>
+  <center><img src="神经网络架构发展史/图9.png" alt="这里写图片描述"> </center>
+
+<p><a href="http://www.rossgirshick.info/" target="_blank" rel="noopener">Ross Girshick (rbg)地址</a><br><a href="https://arxiv.org/abs/1311.2524v1" target="_blank" rel="noopener">论文笔记</a></p>
+<p><strong>源码：</strong><br><strong>R-CNN：</strong><br><a href="https://github.com/rbgirshick/rcnn" target="_blank" rel="noopener">https://github.com/rbgirshick/rcnn</a></p>
+<p><strong>Fast R-CNN：</strong><br><a href="https://github.com/rbgirshick/fast-rcnn" target="_blank" rel="noopener">https://github.com/rbgirshick/fast-rcnn</a><br><a href="https://github.com/rbgirshick/caffe-fast-rcnn" target="_blank" rel="noopener">https://github.com/rbgirshick/caffe-fast-rcnn</a></p>
+<p><strong>Faster R-CNN：</strong><br><a href="https://github.com/chenyuntc/simple-faster-rcnn-pytorch" target="_blank" rel="noopener">https://github.com/chenyuntc/simple-faster-rcnn-pytorch</a><br><a href="https://github.com/YoungGer/Faster-RCNN-Pytorch" target="_blank" rel="noopener">https://github.com/YoungGer/Faster-RCNN-Pytorch</a><br><a href="https://github.com/rbgirshick/py-faster-rcnn" target="_blank" rel="noopener">https://github.com/rbgirshick/py-faster-rcnn</a></p>
+<h2 id="10-GoogLeNet"><a href="#10-GoogLeNet" class="headerlink" title="10.GoogLeNet"></a>10.GoogLeNet</h2><p>来自Google的<strong>Christian Szegedy</strong> 开始追求减少深度学习网络的计算开销， 并设计出GoogleLeNet-第一个Inception架构。</p>
+<p>在2014年秋季，深度学习模型正在变得在图像与视频帧的分类中非常有用。大多数怀疑者已经不再怀疑深度学习与神经网络这一次真的回来了。而且相信这种趋势将一直发展下去。鉴于这些技术的用处，谷歌这样的巨头非常有兴趣在他们的服务器上高效且大规模的部署这些架构。</p>
+<p>在2014年ILSVRC挑战赛获得冠军，将Top5 的错误率降低到6.67%. 一个22层的深度网络，论文题目为：<font face="黑体" seize="4" color="#DD0000">Going deeper with convolutions</font>。GoogLeNet这个名字也是挺有意思的，为了像开山鼻祖的LeNet网络致敬，他们选择了这样的名字。</p>
+<p>GoogLeNet使用没有Inception模块的主干作为初始层，之后是与NiN相似的一个平均池化层加softmax分类器。这个分类器比AlexNet与VGG的分类器的运算数量少的多。这也促成了一项非常有效的网络设计（参见论文：<font face="黑体" seize="4" color="#DD0000"> An Analysis of Deep Neural Network Models for Practical Applications</font>）Christian和他的团队都是非常高产的研究人员。2015年2月，Batch-normalized Inception被引入作为InceptionV2（参见论文：<font face="黑体" seize="4" color="#DD0000"> Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</font>）.Batch-normalization 在一层的输出上计算所有特征映射的均值和标准差，并且使用这些值规范化它们的响应。这相当于数据增白（whitening），因此使得所有的神经图（neural maps）在同样的范围内有响应，而且是零均值。在下一层不需要从输入数据中学习offset时，这有助于训练，还能重点关注如何最好的结合这些特性。</p>
+<p>2015年12月， 该团队发布Inception模块和类似架构的一个新版本（参见论文：<font face="黑体" seize="4" color="#DD0000">Rethinking the Inception Architechture for Computer Vision</font>）.该论文更好地解释了原始的GoogLeNet架构，在设计选择上给出了更过的细节。原始思路如下：<br>通过谨慎构建网络，平衡深度与宽度，从而最大化进入网络的信息流。在每次池化之前，增加特征映射。每当深度增加时，网络层的深度或者特征的数量也系统性的增加。使得每一层深度增加之前，先增加特征的结合。一般只使用33的卷积，可能情况下将55和77过滤器分成多个33。</p>
+<p>Inception v4也结合了Inception模块和ResNet模块的特性。我认为该架构不太简洁。但也充斥着较少透明度的启发法。很难理解里面的选择，对作者而言也难以解释。考虑到网络的简洁性，可被轻易理解并修正，那ResNet可能就更好了。</p>
+  <center><img src="神经网络架构发展史/图10.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD00">目前GoogLeNet有4个版本。</font>
+
+<p>论文地址：<br>[v1] Going Deeper with Convolutions, 6.67% test error<br><a href="http://arxiv.org/abs/1409.4842" target="_blank" rel="noopener">http://arxiv.org/abs/1409.4842</a><br>[v2] Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift, 4.8% test error<br><a href="http://arxiv.org/abs/1502.03167" target="_blank" rel="noopener">http://arxiv.org/abs/1502.03167</a><br>[v3] Rethinking the Inception Architecture for Computer Vision, 3.5% test error<br><a href="http://arxiv.org/abs/1512.00567" target="_blank" rel="noopener">http://arxiv.org/abs/1512.00567</a><br>[v4] Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning, 3.08% test error<br><a href="http://arxiv.org/abs/1602.07261" target="_blank" rel="noopener">http://arxiv.org/abs/1602.07261</a></p>
+<h2 id="11-ResNet"><a href="#11-ResNet" class="headerlink" title="11.ResNet"></a>11.ResNet</h2><p>2015年12月又出现了新的变革，这和Inception V3出现的时间一样。ResNet有着简单的思路：供给两个连续卷积层的输出，并分流（bypassing）输入进入下一层（参见论文：<font face="黑体" seize="4" color="#DD0000"> Deep Residual Learning for Image Recognition</font>）。</p>
+<p>这和之前的一些旧思路类似。DanReSNet中，他们分流两个层并被应用于更大的规模。在两层后分流是一个关键的直觉。因为分流一个层并未给出更多的改进。通过两层可能认为是一个小型的分类器，或者一个Network-In-Network。</p>
+<p>这是第一个超过100的网络， 甚至还能训练出1000层的网络。</p>
+<p>有大量网络层的ResNet开始使用类似于Inception瓶颈层的网络层，这种层通过首先由带有更小输出的11卷积较少特征的数量，然后使用一个33的层，再使用1*1层处理更大量的特征。类似于Inception模块，这样能够保证计算量低，同事提供丰富的特征结合。</p>
+<p>ResNet在输入上使用相对简单的初始化层： 一个带有两个池的7*7卷积层。可以把这个与更复杂、更少直觉性的InceptionV3 V4坐下对比。ResNet也是用一个池化层加上softmax作为最后的分类器。</p>
+<p>关于ResNet的其他洞见每天都有发生：<br>ResNet可被认为既是平行模块又是连续模块，把输入输出视为在许多模块中并行，同时每个模块的输出又是连续连接的。<br>ResNet也可被视为并行模块或连续模块的多种组合（参见论文： Residual Networks are Exponential Ensembles of Relatively Shallow Networks）。<br>已经发现ResNet通常在20-30层的网络块上以并行的方式运行。而不是连续流过整个网络长度。<br>当ResNet像RNN一样把输出反馈到输入时，该网络可被视为更好的生物上可信的皮质模型（参见论文： <font face="黑体" seize="4" color="#DD0000">Bridging the Gaps between Residual Learning, Recurrent Neural Networks and Visual Cortex</font>）。</p>
+  <center><img src="神经网络架构发展史/图11.png" alt="这里写图片描述"> </center>
+
+<p><a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">论文地址</a></p>
+<h2 id="12-SqueezeNet"><a href="#12-SqueezeNet" class="headerlink" title="12.SqueezeNet"></a>12.SqueezeNet</h2><p>2016年，SqueezeNet（参见论文： SqueezeNet： AlexNet-level accuracy with 50x fewer parameters and &lt;0.5MB model size）是最近才公布的，该架构对ResNet与Inception里面的概念进行了重新的处理。一个更好的架构设计网络型号要小，而且参数还不需要复杂的压缩算法。</p>
+  <center><img src="神经网络架构发展史/图12.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD00">目前有4个版本。</font>
+
+<p><a href="https://arxiv.org/abs/1602.07360v1" target="_blank" rel="noopener">论文地址</a><br><a href="https://github.com/DeepScale/SqueezeNet" target="_blank" rel="noopener">源码</a></p>
+<h2 id="13-ENet"><a href="#13-ENet" class="headerlink" title="13.ENet"></a>13.ENet</h2><p>详细了解ENet可参见论文：<font face="黑体" seize="4" color="#DD0000">ENet: A Deep Neural Network Architecture for Real-time semantic Segmentation</font>. ENet 是一个编码加解码的网络，将分类反向传播给原始图像进行分割。这只使用了神经网络，没有其他算法进行图像分割。</p>
+<p>ENet被设计为在开始时尽可能使用最小数量的资源。正是因为它有着如此小的脚本，编码器和解码器网络共占有0.7MB 16fp的精度。即使这么小的型号，ENet在分割准确度上也类似于或高于其他神经网络的解决方案。</p>
+  <center><img src="神经网络架构发展史/图13.png" alt="这里写图片描述"> </center>
+
+<p><a href="https://arxiv.org/abs/1606.02147" target="_blank" rel="noopener">论文地址</a></p>
+<h2 id="14-FractalNet"><a href="#14-FractalNet" class="headerlink" title="14. FractalNet"></a>14. FractalNet</h2><p>（参见论文： <font face="黑体" seize="4" color="#DD0000">FractalNet：Ultra-Deep Neural Network without Residuals</font>）使用递归架构，它没有在ImageNet上测试。该架构是ResNet的衍生或者更通用的ResNet。</p>
+  <center><img src="神经网络架构发展史/图14.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD00">目前有4个版本。</font>
+
+<p><a href="https://arxiv.org/abs/1605.07648v1" target="_blank" rel="noopener">论文地址</a></p>
+<h2 id="15-Xception"><a href="#15-Xception" class="headerlink" title="15.Xception"></a>15.Xception</h2><p>Xception是google继Inception后提出的对Inception v3的另一种改进，主要是采用depthwise separable convolution来替换原来Inception v3中的卷积操作。</p>
+  <center><img src="神经网络架构发展史/图15.png" alt="这里写图片描述"> </center>
+
+<font face="黑体" seize="4" color="#00DD00">目前有3个版本。</font>
+
+<p><a href="https://arxiv.org/abs/1610.02357v1" target="_blank" rel="noopener">论文地址</a><br><a href="https://github.com/yihui-he/Xception-caffe" target="_blank" rel="noopener">caffe实现的Xception:</a><br><a href="https://github.com/kwotsin/TensorFlow-Xception" target="_blank" rel="noopener">TensorFlow实现的Xception</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="BruceOu wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="BruceOu WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="BruceOu Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/OpenCV/【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows）/" rel="next" title="【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows）">
+                <i class="fa fa-chevron-left"></i> 【第一部分-环境搭建】Opencv环境搭建（Visual Studio+Windows）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/TensorFlow/第2章 TensorFlow环境搭建 - A/" rel="prev" title="第2章 TensorFlow环境搭建 - A">
+                第2章 TensorFlow环境搭建 - A <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzMzMC8xMzg2NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BruceOu">
+            
+              <p class="site-author-name" itemprop="name">BruceOu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ouxiaolong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u013162035" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.bruceou.cn/" target="_blank" title="BruceOu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>BruceOu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/Bruceoxl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bruceou.coding.me/" title="BruceOu的Coding博客" target="_blank">BruceOu的Coding博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-BP"><span class="nav-number">1.</span> <span class="nav-text">1.BP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-LeNet5"><span class="nav-number">2.</span> <span class="nav-text">2.LeNet5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Dan-Ciresan-Net"><span class="nav-number">3.</span> <span class="nav-text">3.Dan Ciresan Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-AlexNet"><span class="nav-number">4.</span> <span class="nav-text">4. AlexNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-ZF-Net"><span class="nav-number">5.</span> <span class="nav-text">5.ZF Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Overfeat"><span class="nav-number">6.</span> <span class="nav-text">6.Overfeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-VGG-Net"><span class="nav-number">7.</span> <span class="nav-text">7.VGG-Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-NIN"><span class="nav-number">8.</span> <span class="nav-text">8.NIN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-R-CNN、Fast-R-CNN、Faster-R-CNN"><span class="nav-number">9.</span> <span class="nav-text">9. R-CNN、Fast R-CNN、Faster R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-GoogLeNet"><span class="nav-number">10.</span> <span class="nav-text">10.GoogLeNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-ResNet"><span class="nav-number">11.</span> <span class="nav-text">11.ResNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-SqueezeNet"><span class="nav-number">12.</span> <span class="nav-text">12.SqueezeNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-ENet"><span class="nav-number">13.</span> <span class="nav-text">13.ENet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-FractalNet"><span class="nav-number">14.</span> <span class="nav-text">14. FractalNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Xception"><span class="nav-number">15.</span> <span class="nav-text">15.Xception</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018-06 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BruceOu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65894410";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
