@@ -123,13 +123,13 @@
 
 
 
-<meta name="description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2 好">
+<meta name="description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第5章 Tensorboard">
+<meta property="og:title" content="《人工智能-TensorFlow开发笔记》第5章 Tensorboard">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/TensorFlow/第5章 Tensorboard/index.html">
 <meta property="og:site_name" content="BruceOu的博客">
-<meta property="og:description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2 好">
+<meta property="og:description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图2.png">
@@ -139,10 +139,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图5.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图6.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图7.png">
-<meta property="og:updated_time" content="2018-07-13T01:07:53.431Z">
+<meta property="og:updated_time" content="2018-12-15T14:13:09.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第5章 Tensorboard">
-<meta name="twitter:description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2 好">
+<meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》第5章 Tensorboard">
+<meta name="twitter:description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图1.png">
 
 
@@ -179,7 +179,7 @@
 
 
 
-  <title>第5章 Tensorboard | BruceOu的博客</title>
+  <title>《人工智能-TensorFlow开发笔记》第5章 Tensorboard | BruceOu的博客</title>
   
 
 
@@ -365,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第5章 Tensorboard</h1>
+          <h1 class="post-title" itemprop="name headline">《人工智能-TensorFlow开发笔记》第5章 Tensorboard</h1>
         
 
         <div class="post-meta">
@@ -443,20 +443,36 @@
 
       
         <p>TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。</p>
-<h2 id="5-1-Tensorboard网络结构"><a href="#5-1-Tensorboard网络结构" class="headerlink" title="5.1 Tensorboard网络结构"></a>5.1 Tensorboard网络结构</h2><p>Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。<br> <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图1.png" alt="这里写图片描述"></center></p>
+<h2 id="5-1-Tensorboard网络结构"><a href="#5-1-Tensorboard网络结构" class="headerlink" title="5.1 Tensorboard网络结构"></a>5.1 Tensorboard网络结构</h2><p>Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图1.png" alt="这里写图片描述"></p>
 <center>图1</center>
 
-<p>同时我们也可以展开看每个layer中的一些具体的结构：<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图2.png" alt="这里写图片描述"></center><br>  <center>图2</center></p>
+<p>同时我们也可以展开看每个layer中的一些具体的结构：</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图2.png" alt="这里写图片描述"></p>
+  <center>图2</center>
+
 <p>好了，通过阅读代码和之前的图片我们大概知道了此处是有一个输入层（inputs），一个隐含层（layer），还有一个输出层（output） 现在可以看看如何进行可视化。</p>
 <p>我们先看完完整代码吧。</p>
 <p>【代码参看附件test1_tensorboard1.py】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt#需要安装才可使用</span><br><span class="line"></span><br><span class="line">#添加层</span><br><span class="line">def add_layer(inputs, in_size, out_size, activation_function=None):</span><br><span class="line">    </span><br><span class="line">    #线性模型</span><br><span class="line">    with tf.name_scope(&apos;layer&apos;):</span><br><span class="line">        with tf.name_scope(&apos;weights&apos;):</span><br><span class="line">            Weights = tf.Variable(tf.random_normal([in_size, out_size]), name=&apos;W&apos;)</span><br><span class="line">        with tf.name_scope(&apos;biases&apos;):</span><br><span class="line">            biases = tf.Variable(tf.zeros([1, out_size]) + 0.1, name=&apos;b&apos;)</span><br><span class="line">        with tf.name_scope(&apos;Wx_plus_b&apos;):</span><br><span class="line">            Wx_plus_b = tf.add(tf.matmul(inputs, Weights), biases)</span><br><span class="line">        if activation_function is None:</span><br><span class="line">            outputs = Wx_plus_b</span><br><span class="line">        else:</span><br><span class="line">            outputs = activation_function(Wx_plus_b, )</span><br><span class="line">        return outputs</span><br><span class="line"></span><br><span class="line">#【1】创建原始数据，及要训练的数据</span><br><span class="line">x_data = np.linspace(-1,1,300)[:, np.newaxis]</span><br><span class="line">noise = np.random.normal(0, 0.05, x_data.shape)</span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise</span><br><span class="line"></span><br><span class="line">#【2】定义节点，输入网络</span><br><span class="line">with tf.name_scope(&apos;inputs&apos;):</span><br><span class="line">    xs = tf.placeholder(tf.float32, [None, 1],name=&apos;x_input&apos;)</span><br><span class="line">    ys = tf.placeholder(tf.float32, [None, 1],name=&apos;y_input&apos;)</span><br><span class="line"></span><br><span class="line">#【3】定义神经层：隐藏层和预测层</span><br><span class="line">#添加隐藏层，输入值是 xs，在隐藏层有 10 个神经元  </span><br><span class="line">l1 = add_layer(xs, 1, 10, activation_function=tf.nn.relu)</span><br><span class="line">#添加输出层，输入值是隐藏层 l1，在预测层输出 1 个结果</span><br><span class="line">prediction = add_layer(l1, 10, 1, activation_function=None)</span><br><span class="line"></span><br><span class="line">#【4】定义损失函数，误差的均方差</span><br><span class="line">with tf.name_scope(&apos;loss&apos;):</span><br><span class="line">    loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),</span><br><span class="line">                                        reduction_indices=[1]))</span><br><span class="line">#【5】选择 optimizer 使 loss 达到最小，选择梯度下降的方法训练数据</span><br><span class="line">with tf.name_scope(&apos;train&apos;):</span><br><span class="line">    train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br><span class="line"></span><br><span class="line">#【6】初始化数据，tf 的必备步骤，主要声明了变量，就必须初始化才能用</span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">#【7】创建Session会话。启动图</span><br><span class="line">sess = tf.Session()</span><br><span class="line">#writer = tf.train.SummaryWriter(&quot;logs/&quot;, sess.graph)#新版的TensorFlow已经弃用</span><br><span class="line">writer = tf.summary.FileWriter(&quot;logs/&quot;,sess.graph)#加载文件</span><br><span class="line"></span><br><span class="line">#上面定义的都没有运算，直到 sess.run 才会开始运算</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure></p>
-<p>运行成功后会在你存放文件的文件夹下生成下列文件。<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图3.png" alt="这里写图片描述"></center><br>  <center>图3生成的网络图文件</center></p>
+<p>运行成功后会在你存放文件的文件夹下生成下列文件。</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图3.png" alt="这里写图片描述"></p>
+  <center>图3生成的网络图文件</center>
+
 <p>打开 terminal，进入你存放的文件夹地址上一层，笔者存放的文件夹是logs。因此，要进入logs的上一级文件，运行命令 tensorboard –logdir=’logs/‘ 后会返回一个地址。<br> <img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图8.png" alt="这里写图片描述"><br>地址为：http://(主机名):6006/。</p>
-<p>然后用浏览器打开这个地址。<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图4.png" alt="这里写图片描述"></center><br>  <center>图4</center></p>
+<p>然后用浏览器打开这个地址。</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图4.png" alt="这里写图片描述"></p>
+  <center>图4</center>
+
 <p>点击 graph 标签栏下就可以看到流程图了：<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图5.png" alt="这里写图片描述"></center><br>  <center>图5</center><br>【注1】在Windows平台上运行命令应用tensorboard –logdir=logs/<br>【注2】笔者在上述代码中已经进行详细注释了，再次就不在赘述了。</p>
 <h2 id="5-2-Tensorboard网络运行"><a href="#5-2-Tensorboard网络运行" class="headerlink" title="5.2 Tensorboard网络运行"></a>5.2 Tensorboard网络运行</h2><p>好了，前文讲解的是神经网络的图，接下来在上文的基础上继续使用tensorboard。我们直接上代码吧。<br>【代码参看附件test2_tensorboard2】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt#需要安装才可使用</span><br><span class="line"></span><br><span class="line">#添加层</span><br><span class="line">def add_layer(inputs, in_size, out_size, n_layer, activation_function=None):</span><br><span class="line">    # add one more layer and return the output of this layer</span><br><span class="line">    layer_name = &apos;layer%s&apos; % n_layer</span><br><span class="line">    #线性模型</span><br><span class="line">    with tf.name_scope(&apos;layer&apos;):</span><br><span class="line">        with tf.name_scope(&apos;weights&apos;):</span><br><span class="line">            Weights = tf.Variable(tf.random_normal([in_size, out_size]), name=&apos;W&apos;)</span><br><span class="line">            tf.summary.histogram(layer_name + &apos;/weights&apos;, Weights)</span><br><span class="line">            #tf.histogram_summary(layer_name + &apos;/weights&apos;, Weights)#新版已经废弃</span><br><span class="line">        with tf.name_scope(&apos;biases&apos;):</span><br><span class="line">            biases = tf.Variable(tf.zeros([1, out_size]) + 0.1, name=&apos;b&apos;)</span><br><span class="line">        with tf.name_scope(&apos;Wx_plus_b&apos;):</span><br><span class="line">            Wx_plus_b = tf.add(tf.matmul(inputs, Weights), biases)</span><br><span class="line">            tf.summary.histogram(layer_name + &apos;/biases&apos;, biases)</span><br><span class="line">        if activation_function is None:</span><br><span class="line">            outputs = Wx_plus_b</span><br><span class="line">        else:</span><br><span class="line">            outputs = activation_function(Wx_plus_b, )</span><br><span class="line">        tf.summary.histogram(layer_name + &apos;/outputs&apos;, outputs)</span><br><span class="line">        return outputs</span><br><span class="line"></span><br><span class="line">#【1】创建原始数据，及要训练的数据</span><br><span class="line">x_data = np.linspace(-1,1,300)[:, np.newaxis]</span><br><span class="line">noise = np.random.normal(0, 0.05, x_data.shape)</span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise</span><br><span class="line"></span><br><span class="line">#【2】定义节点，输入网络</span><br><span class="line">with tf.name_scope(&apos;inputs&apos;):</span><br><span class="line">    xs = tf.placeholder(tf.float32, [None, 1],name=&apos;x_input&apos;)</span><br><span class="line">    ys = tf.placeholder(tf.float32, [None, 1],name=&apos;y_input&apos;)</span><br><span class="line"></span><br><span class="line">#【3】定义神经层：隐藏层和预测层</span><br><span class="line">#添加隐藏层，输入值是 xs，在隐藏层有 10 个神经元  </span><br><span class="line">l1 = add_layer(xs, 1, 10, n_layer=1, activation_function=tf.nn.relu)</span><br><span class="line">#添加输出层，输入值是隐藏层 l1，在预测层输出 1 个结果</span><br><span class="line">prediction = add_layer(l1, 10, 1, n_layer=2, activation_function=None)</span><br><span class="line"></span><br><span class="line">#【4】定义损失函数，误差的均方差</span><br><span class="line">with tf.name_scope(&apos;loss&apos;):</span><br><span class="line">    loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),</span><br><span class="line">                                        reduction_indices=[1]))</span><br><span class="line">    tf.summary.scalar(&apos;loss&apos;, loss)</span><br><span class="line"></span><br><span class="line">#【5】选择 optimizer 使 loss 达到最小，选择梯度下降的方法训练数据</span><br><span class="line">with tf.name_scope(&apos;train&apos;):</span><br><span class="line">    train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br><span class="line"></span><br><span class="line">#【6】初始化数据，tf 的必备步骤，主要声明了变量，就必须初始化才能用</span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">#【7】创建Session会话。启动图</span><br><span class="line">sess = tf.Session()</span><br><span class="line"></span><br><span class="line">#merged = tf.merge_all_summaries()#新版已经废弃</span><br><span class="line">merged = tf.summary.merge_all()</span><br><span class="line">#writer = tf.train.SummaryWriter(&quot;logs/&quot;, sess.graph)#新版的TensorFlow已经弃用</span><br><span class="line">writer = tf.summary.FileWriter(&quot;logs/&quot;,sess.graph)#加载文件</span><br><span class="line"></span><br><span class="line">#上面定义的都没有运算，直到 sess.run 才会开始运算</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line">#【8】训练数据</span><br><span class="line">for i in range(1000):</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:</span><br><span class="line">        result = sess.run(merged,</span><br><span class="line">                          feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">        writer.add_summary(result, i)</span><br></pre></td></tr></table></figure></p>
-<p>运行成功后，可以通过网页查看。<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图6.png" alt="这里写图片描述"></center><br>  <center>图6</center></p>
-<p>【注1】前文的几个代码请对比查看其中的异同，笔者在代码中也已经详细的注释了，请仔细阅读吧。<br>【注2】在使用Spyder的时候，如果多次运行代码，TensorBoard会跟踪生成多个结果。因此注意在每次查看TensorBoard前Restart Kernel。<br>  <center><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图7.png" alt="这里写图片描述"></center><br>  <center>图7</center></p>
+<p>运行成功后，可以通过网页查看。</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图6.png" alt="这里写图片描述"></p>
+  <center>图6</center>
+
+<p>【注1】前文的几个代码请对比查看其中的异同，笔者在代码中也已经详细的注释了，请仔细阅读吧。<br>【注2】在使用Spyder的时候，如果多次运行代码，TensorBoard会跟踪生成多个结果。因此注意在每次查看TensorBoard前Restart Kernel。</p>
+<p><img src="/2018/12/05/TensorFlow/第5章 Tensorboard/图7.png" alt="这里写图片描述"></p>
+  <center>图7</center>
+
 <p><strong>本章参考代码</strong><br><a href="https://github.com/Ouxiaolong/TensorFlow/tree/master/5%20Tensorboard" target="_blank" rel="noopener">点击进入</a></p>
 <p><strong>TensorFlow中API版本容错</strong></p>
 <p> #writer = tf.train.SummaryWriter(“logs/“, sess.graph)#新版的TensorFlow已经弃用<br>writer = tf.summary.FileWriter(“logs/“,sess.graph)#加载文件</p>
@@ -530,8 +546,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/TensorFlow/第4章 搭建神经网络/" rel="next" title="第4章 搭建神经网络">
-                <i class="fa fa-chevron-left"></i> 第4章 搭建神经网络
+              <a href="/2018/12/05/TensorFlow/第4章 搭建神经网络/" rel="next" title="《人工智能-TensorFlow开发笔记》第4章 搭建神经网络">
+                <i class="fa fa-chevron-left"></i> 《人工智能-TensorFlow开发笔记》第4章 搭建神经网络
               </a>
             
           </div>
@@ -540,8 +556,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/05/TensorFlow/第6章 损失函数与代价函数/" rel="prev" title="第6章 损失函数与代价函数">
-                第6章 损失函数与代价函数 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/15/TensorFlow/第6章 损失函数与代价函数/" rel="prev" title="《人工智能-TensorFlow开发笔记》第6章 损失函数与代价函数">
+                《人工智能-TensorFlow开发笔记》第6章 损失函数与代价函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
