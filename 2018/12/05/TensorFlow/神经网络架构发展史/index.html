@@ -147,7 +147,6 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图10.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图11.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图12.png">
-<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图13.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图14.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/神经网络架构发展史/图15.png">
 <meta property="og:updated_time" content="2018-12-15T14:13:16.737Z">
@@ -460,7 +459,12 @@
 <p>1994年，<font face="黑体" seize="4" color="#DD0000">word-level training of a handwritten word recognizer based on convolutional neural networks</font>发表，这可以说是最早的卷积神经网络之一， 并且推动了深度学习领域的发展。自从1988年开始，在许多次成功的迭代后，这项由Yann LeCun完成的开拓性成果被命名为LeNet5（参见：<font face="黑体" seize="4" color="#DD0000">Gradient-Based Learning Applied to Document Recognition</font>）.</p>
 <p>1998年的LeNet5标注着CNN的真正面世，但是这个模型在后来的一段时间并未能火起来，主要原因是要求机器性能较好，而且其他的算法像SVM也能达到类似的效果甚至超过。</p>
 <p>LeNet5的架构基于这样的观点：（尤其是）图像的特征分布在整张图像上，以及带有可学习参数的卷积是一种用少量参数在多个位置上提取相似特征的有效方法。在那时候，没有GPU帮助训练，甚至CPU的速度也很慢。因此，能够保存参数以及计算过程是一个关键的进展。这和将每个像素用作一个大型多层神经网络的单独输入相反。LeNet5阐述了那些像素不应该被使用在第一层，因为图像具有很强的空间相关性，而使用图像中独立的像素作为不同的输入特征则利用不到这些相关性。<br>LeNet5特征能够总结为如下几点：</p>
-<font face="黑体" seize="4" color="#0000DD">1）卷积神经网络使用三个层作为一个系列： 卷积，池化，非线性；<br>2）使用卷积提取空间特征；<br>3）使用映射到空间均值下采样（subsample）；<br>4）双曲线（tanh）或S型（sigmoid）形式的非线性；<br>5）多层神经网络（MLP）作为最后的分类器；<br>6）层与层之间的稀疏连接矩阵避免大的计算成本。</font>
+<font face="黑体" seize="4" color="#0000DD">1）卷积神经网络使用三个层作为一个系列： 卷积，池化，非线性；
+2）使用卷积提取空间特征；
+3）使用映射到空间均值下采样（subsample）；
+4）双曲线（tanh）或S型（sigmoid）形式的非线性；
+5）多层神经网络（MLP）作为最后的分类器；
+6）层与层之间的稀疏连接矩阵避免大的计算成本。</font>
 
 <p>总体看来，这个网络是最近大量神经网络架构的起点，并且也给这个领域带来了许多灵感。</p>
 <p><img src="/2018/12/05/TensorFlow/神经网络架构发展史/图2.png" alt="这里写图片描述"></p>
@@ -474,7 +478,10 @@
 <h2 id="4-AlexNet"><a href="#4-AlexNet" class="headerlink" title="4. AlexNet"></a>4. AlexNet</h2><p>2012年，<strong>Alex Krizhevsky</strong>发表了AlexNet（参见<font face="黑体" seize="4" color="#DD0000"> ImageNet Classification with Deep Convolutional Neural Networks</font>），它是LeNet的一种更深更宽的版本，并以显著的优势赢得了困难的ImageNet竞赛。</p>
 <p>AlexNet是在2012年被发表的一个经典之作，并在当年取得了ImageNet最好的成绩，也是在那年之后，更多的更深的神经网络被提出，其官方提供的数据模型。</p>
 <p>AlexNet 将LeNet的思想扩展到了更大的能学习到更复杂的对象层次的神经网络上。这项工作的贡献有：</p>
-<font face="黑体" seize="4" color="#00DD00">1）使用修正的非线性单元（ReLU）<br>2）在训练的时候使用Dropout技术有选择的忽视单个神经元，从而避免过拟合<br>3）覆盖进行最大池化，避免平均池化的平均化效果。<br>4）使用GPU NVIDIA GTX580减少训练时间</font>
+<font face="黑体" seize="4" color="#00DD00">1）使用修正的非线性单元（ReLU）
+2）在训练的时候使用Dropout技术有选择的忽视单个神经元，从而避免过拟合
+3）覆盖进行最大池化，避免平均池化的平均化效果。
+4）使用GPU NVIDIA GTX580减少训练时间</font>
 
 <p>在那时， GPU比CPU提供更多数量的核，训练时间可以提升10倍。这又反过来允许使用更大的数据集和更大的图像。</p>
 <p>AlexNet的成功掀起了一场小革命。卷积神经网络现在是深度学习的骨干。它已经变成了现在能够解决有用任务的大型神经网络的代名词。</p>
@@ -483,11 +490,11 @@
 <h2 id="5-ZF-Net"><a href="#5-ZF-Net" class="headerlink" title="5.ZF Net"></a>5.ZF Net</h2><p>2013 ILSVRC比赛冠军，结构相对于AlexNet无太大的变化，只是进行了参数的优化。使用Relu激活函数，交叉熵代价函数。</p>
 <p><img src="/2018/12/05/TensorFlow/神经网络架构发展史/图5.png" alt="这里写图片描述"> </p>
 <p><a href="http://dblp.uni-trier.de/pers/hd/z/Zeiler:Matthew_D=" target="_blank" rel="noopener">Matthew D. Zeiler论文下载</a><br><a href="https://cs.nyu.edu/~fergus/pmwiki/pmwiki.php" target="_blank" rel="noopener">Rob Fergus主页</a></p>
-<h2 id="6-Overfeat"><a href="#6-Overfeat" class="headerlink" title="6.Overfeat"></a>6.Overfeat</h2><p>2013年12月， 纽约大学的<strong>Yann LeCun</strong>实验室提出了AlexNet的衍生–Overfeat（参见： <font face="黑体" seize="4" color="#DD0000">OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</font>）. 这篇文章也提过了学习边界框（learning bounding box），并导致之后出现了很多研究同一主题的论文。</p>
+<h2 id="6-Overfeat"><a href="#6-Overfeat" class="headerlink" title="6.Overfeat"></a>6.Overfeat</h2><p>2013年12月， 纽约大学的<strong>Yann LeCun</strong>实验室提出了AlexNet的衍生—Overfeat（参见： <font face="黑体" seize="4" color="#DD0000">OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</font>）. 这篇文章也提过了学习边界框（learning bounding box），并导致之后出现了很多研究同一主题的论文。</p>
 <p><img src="/2018/12/05/TensorFlow/神经网络架构发展史/图6.png" alt="这里写图片描述"> </p>
 <p><a href="http://yann.lecun.com/exdb/publis/pdf/sermanet-iclr-14.pdf" target="_blank" rel="noopener">论文地址</a></p>
 <h2 id="7-VGG-Net"><a href="#7-VGG-Net" class="headerlink" title="7.VGG-Net"></a>7.VGG-Net</h2><p>2014年，来自牛津大学的VGG网络（参见： <font face="黑体" seize="4" color="#DD0000">Very Deep Convolutional Networks for Large-Scale Image Recognition</font>）是第一个在各个卷积层使用更小的3*3过滤器（filter），并把他们组合成为一个卷积序列进行处理的网络。</p>
-<p>这看起来和LeNet的原理相反，即使用大的卷积来获得一张图像中相似的特征。和AlexNet的99或1111过滤器不同，VGG的过滤器很小，离LeNet竭力所要避免的臭名昭著的11的卷积异常接近–至少在该网络的第一层是这样。但是VGG巨大的进展是通过依次采用多个33的卷积，能够模仿出更大的感受野（receptive field）的效果，例如55或77.这些思想也被用在了最近的更多的网络架构上。如Inception与ResNet。<br>VGG网络使用多个33卷积层去表征复杂特征。如果VGG-E的第3，4，5块（block）：256256 和 512512个33过滤器被依次使用多次，以提取更多复杂特征以及这些特征的组合。其效果就等于一个带有3个卷积层的大型的512*512分类器。这显然意味着大量的参数和学习能力。但是这些网络训练困难，必须划分到较小的网络，并逐层累加。这是因为缺少强大的方式对模型进行正则化，这样或多或少约束大量由于大量参数增长的搜索空间。</p>
+<p>这看起来和LeNet的原理相反，即使用大的卷积来获得一张图像中相似的特征。和AlexNet的99或1111过滤器不同，VGG的过滤器很小，离LeNet竭力所要避免的臭名昭著的11的卷积异常接近—至少在该网络的第一层是这样。但是VGG巨大的进展是通过依次采用多个33的卷积，能够模仿出更大的感受野（receptive field）的效果，例如55或77.这些思想也被用在了最近的更多的网络架构上。如Inception与ResNet。<br>VGG网络使用多个33卷积层去表征复杂特征。如果VGG-E的第3，4，5块（block）：256256 和 512512个33过滤器被依次使用多次，以提取更多复杂特征以及这些特征的组合。其效果就等于一个带有3个卷积层的大型的512*512分类器。这显然意味着大量的参数和学习能力。但是这些网络训练困难，必须划分到较小的网络，并逐层累加。这是因为缺少强大的方式对模型进行正则化，这样或多或少约束大量由于大量参数增长的搜索空间。</p>
 <p>VGG在许多层中都使用大特征尺寸，因为推断（inference）在运行时是相当耗费时间。正如Inception的瓶颈那样，减少特征的数量将节省一些计算成本。</p>
 <p>VGG-Net 在ILSVRC localization and classification 两个问题上分别取得了第一名和第二名，VGG-Net不同于AlexNet的地方是：VGG-Net使用更多的层，通常有16－19层，而AlexNet只有8层。另外一个不同的地方是：VGG-Net的所有 convolutional layer 使用同样大小的 convolutional filter，大小为 3 x 3。</p>
 <p><img src="/2018/12/05/TensorFlow/神经网络架构发展史/图7.png" alt="这里写图片描述"> </p>
@@ -534,7 +541,7 @@
 <p><a href="https://arxiv.org/abs/1602.07360v1" target="_blank" rel="noopener">论文地址</a><br><a href="https://github.com/DeepScale/SqueezeNet" target="_blank" rel="noopener">源码</a></p>
 <h2 id="13-ENet"><a href="#13-ENet" class="headerlink" title="13.ENet"></a>13.ENet</h2><p>详细了解ENet可参见论文：<font face="黑体" seize="4" color="#DD0000">ENet: A Deep Neural Network Architecture for Real-time semantic Segmentation</font>. ENet 是一个编码加解码的网络，将分类反向传播给原始图像进行分割。这只使用了神经网络，没有其他算法进行图像分割。</p>
 <p>ENet被设计为在开始时尽可能使用最小数量的资源。正是因为它有着如此小的脚本，编码器和解码器网络共占有0.7MB 16fp的精度。即使这么小的型号，ENet在分割准确度上也类似于或高于其他神经网络的解决方案。</p>
-  <center><img src="/2018/12/05/TensorFlow/神经网络架构发展史/图13.png" alt="这里写图片描述"> </center>
+  <center>![这里写图片描述](神经网络架构发展史/图13.png) </center>
 
 <p><a href="https://arxiv.org/abs/1606.02147" target="_blank" rel="noopener">论文地址</a></p>
 <h2 id="14-FractalNet"><a href="#14-FractalNet" class="headerlink" title="14. FractalNet"></a>14. FractalNet</h2><p>（参见论文： <font face="黑体" seize="4" color="#DD0000">FractalNet：Ultra-Deep Neural Network without Residuals</font>）使用递归架构，它没有在ImageNet上测试。该架构是ResNet的衍生或者更通用的ResNet。</p>
