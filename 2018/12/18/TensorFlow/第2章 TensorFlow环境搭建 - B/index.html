@@ -129,18 +129,43 @@
 
 
 
-<meta name="description" content="[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80450113)">
+<meta name="description" content="2.2 Windows安装TensorFlow在学习TensorFlow或者其他框架，我们关注的是框架本身，当然对于初学者，使用Windows也是一个不错的选择，有很多朋友不熟悉Linux操作系统，初学TensorFlow还是使用Windows吧，废话就不说了，我们开始安装环境吧。配置环境和软件版本：系统环境：Windows10 或者Windows7TensorFlow版本：1.8Python版本">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - A">
-<meta property="og:url" content="http://yoursite.com/2018/12/05/TensorFlow/第2章 TensorFlow环境搭建 - A/index.html">
+<meta property="og:title" content="《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - B">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/index.html">
 <meta property="og:site_name" content="BruceOu的博客">
-<meta property="og:description" content="[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80450113)">
+<meta property="og:description" content="2.2 Windows安装TensorFlow在学习TensorFlow或者其他框架，我们关注的是框架本身，当然对于初学者，使用Windows也是一个不错的选择，有很多朋友不熟悉Linux操作系统，初学TensorFlow还是使用Windows吧，废话就不说了，我们开始安装环境吧。配置环境和软件版本：系统环境：Windows10 或者Windows7TensorFlow版本：1.8Python版本">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-15T14:15:25.367Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/tt1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218121512773.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218121543704.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218122426610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218122441827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218122800462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218122830644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t5.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t6.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t7.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t8.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t9.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t10.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t11.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t12.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t13.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t14.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/b1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t15.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t16.png">
+<meta property="og:updated_time" content="2018-12-18T04:50:41.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - A">
-<meta name="twitter:description" content="[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80450113)">
+<meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - B">
+<meta name="twitter:description" content="2.2 Windows安装TensorFlow在学习TensorFlow或者其他框架，我们关注的是框架本身，当然对于初学者，使用Windows也是一个不错的选择，有很多朋友不熟悉Linux操作系统，初学TensorFlow还是使用Windows吧，废话就不说了，我们开始安装环境吧。配置环境和软件版本：系统环境：Windows10 或者Windows7TensorFlow版本：1.8Python版本">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/18/TensorFlow/第2章%20TensorFlow环境搭建%20-%20B/t1.png">
 
 
 
@@ -170,13 +195,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/05/TensorFlow/第2章 TensorFlow环境搭建 - A/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/">
 
 
 
 
 
-  <title>《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - A | BruceOu的博客</title>
+  <title>《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - B | BruceOu的博客</title>
   
 
 
@@ -345,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/TensorFlow/第2章 TensorFlow环境搭建 - A/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="BruceOu">
@@ -362,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - A</h1>
+          <h1 class="post-title" itemprop="name headline">《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - B</h1>
         
 
         <div class="post-meta">
@@ -374,8 +399,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T16:36:29+08:00">
-                2018-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-18T12:30:00+08:00">
+                2018-12-18
               </time>
             
 
@@ -439,10 +464,107 @@
       
 
       
-        <font face="黑体" size="6">
-[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80450113)
+        <h2 id="2-2-Windows安装TensorFlow"><a href="#2-2-Windows安装TensorFlow" class="headerlink" title="2.2 Windows安装TensorFlow"></a>2.2 Windows安装TensorFlow</h2><p>在学习TensorFlow或者其他框架，我们关注的是框架本身，当然对于初学者，使用Windows也是一个不错的选择，有很多朋友不熟悉Linux操作系统，初学TensorFlow还是使用Windows吧，废话就不说了，我们开始安装环境吧。<br>配置环境和软件版本：<br><strong>系统环境：Windows10 或者Windows7</strong><br>TensorFlow版本：1.8<br>Python版本：3.6<br>CUDA版本：9.1<br>cuDNN版本： v7.0.5<br>Anaconda版本：3-5.1.0</p>
+<h3 id="2-2-1-Anaconda搭建Python环境"><a href="#2-2-1-Anaconda搭建Python环境" class="headerlink" title="2.2.1 Anaconda搭建Python环境"></a>2.2.1 Anaconda搭建Python环境</h3><p>Anaconda（<a href="https://www.anaconda.com/download/#windows）是一个集成了Python的工具包，还包含了Python的一些常用库，如numpy等，所有版本下载地址（https://repo.continuum.io/archive/），外网下载速度很慢，可以到清华大学镜像下载，需要注意的是，配置TensorFlow需要Anaconda3-5.1.0，该版本的Anaconda安装的才是Python3.6，而到目前为止TensorFlow在Windows下只能用Python3.6版本。" target="_blank" rel="noopener">https://www.anaconda.com/download/#windows）是一个集成了Python的工具包，还包含了Python的一些常用库，如numpy等，所有版本下载地址（https://repo.continuum.io/archive/），外网下载速度很慢，可以到清华大学镜像下载，需要注意的是，配置TensorFlow需要Anaconda3-5.1.0，该版本的Anaconda安装的才是Python3.6，而到目前为止TensorFlow在Windows下只能用Python3.6版本。</a></p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t1.png" alt="在这里插入图片描述">)</p>
+<center>图1</center>
 
-</font>
+<p>就和安装普通的软件一样，全部选择默认即可，注意勾选将python3.6添加进环境变量。安装完成后在开始菜单会出现一个Anaconda3的文件夹。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t2.jpg" alt="在这里插入图片描述"></p>
+<center>图2</center>
+
+
+
+<p>这样Anaconda就安装好了，我们可以通过下面的命令来查看Anaconda已经安装了哪些包。 运行 开始菜单-&gt;Anaconda3—&gt;Anaconda Prompt ：</p>
+<p>conda list</p>
+<p>可以看到已经安装了numpy、sympy等常用的包。</p>
+<h3 id="2-2-2-CPU版TensorFlow"><a href="#2-2-2-CPU版TensorFlow" class="headerlink" title="2.2.2 CPU版TensorFlow"></a>2.2.2 CPU版TensorFlow</h3><p>TensorFlow有两个版本大家肯定都知道，但是按照官网的建议，安装GPU版之前最好装一遍CPU版的，在这里直接在cmd中利用Anaconda来安装，注意cmd一定要用管理员权限打开。<br>（1）在Anaconda Prompt中利用Anaconda创建一个环境名称为tensorflow ，输入下面命令，用来新建一个conda环境。<br>conda create -n tensorflow </p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/tt1.png" alt="在这里插入图片描述"></p>
+<p>在安装路径下可以看到有TensorFlow目录。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t3.png" alt="在这里插入图片描述"></p>
+<center>图3</center>
+
+<p>运行开始菜单-&gt;Anaconda3—&gt;Anaconda Navigator，点击左侧的Environments，可以看到tensorflow的环境已经创建好了。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t4.png" alt="在这里插入图片描述"></p>
+<center>图4</center>
+
+<p>（2）在Anaconda Prompt中启动tensorflow环境：</p>
+<p>activate tensorflow</p>
+<p>激活之后，cmd命令行的前面会有一个写着tensorflow的括号。</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181218121512773.png" alt="在这里插入图片描述"></p>
+<p>注：当不使用tensorflow时，关闭tensorflow环境，命令为：deactivate</p>
+<p>（3）安装cpu版本的TensorFlow<br>在安装之前先更新一下环境：</p>
+<p>python –m pip install —upgrade pip</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181218121543704.png" alt="在这里插入图片描述"></p>
+<p>执行一下命令进行安装TensorFlow。</p>
+<p>pip install —upgrade —ignore-installed tensorflow</p>
+<p><img src="https://img-blog.csdnimg.cn/20181218122426610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20181218122441827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这样tensorflow cpu版本就安装好了。<br>（4）测试tensorflow<br>在Anaconda Prompt中启动tensorflow环境，并进入python环境。使用管理员权限打开cmd，键入activate tensorflow，继续键入python，以执行python语句，依次键入下列代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://img-blog.csdnimg.cn/20181218122800462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>返回helloword表示安装成功。<br>【注】我们在Anaconda自带的ipython 和Spyder中import tensorflow的时候一直失败，提示 No module named ‘tensorflow’，如下图，那是因为我们没有在tensorflow的环境下打开它们。</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181218122830644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>为了能在ipython 和Spyder中使用tensorflow，我们需要在tensorflow的环境中安装这两个的插件。打开Anaconda Navigator，选择Not installed，找到 ipython和Spyder并安装，笔者这里已经安装好，所以在这个页面没有显示。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t5.png" alt="在这里插入图片描述"></p>
+<center>图5</center>
+
+<p>切换到installed，可以看到两个都已经安装好，其实可以按照自己的需要安装。下图显示已经安装好的Spyder。当然，在此之前安装好TensorFlow，不然也是不能运行的。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t6.png" alt="在这里插入图片描述"></p>
+<center>图6</center>
+
+<p> <img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t7.png" alt="在这里插入图片描述"></p>
+<center>图7</center>
+
+<p>安装好插件后，我们需要测试一下。在Anaconda Prompt中启动tensorflow环境，并运行ipython，import tensorflow发现成功。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t8.png" alt="在这里插入图片描述"></p>
+<center>图8</center>
+
+<p>同样，在Anaconda Prompt中启动tensorflow环境，并运行Spyder，等一会儿后会启动Spyder IDE，import tensorflow 同样成功。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t9.png" alt="在这里插入图片描述"></p>
+<center>图9</center>
+
+<h3 id="2-2-3-GPU环境搭建"><a href="#2-2-3-GPU环境搭建" class="headerlink" title="2.2.3 GPU环境搭建"></a>2.2.3 GPU环境搭建</h3><p><strong>1.确定显卡是否支持CUDA</strong><br>CUDA是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。CUDA环境搭建需要依赖电脑的GPU，我们需要先查看GPU版本。</p>
+<p>【计算机】-&gt;【控制面板】-&gt;【系统和安全】-&gt;【系统】-&gt;【设备管理器】可以查看显卡型号。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t10.jpg" alt="在这里插入图片描述"></p>
+<center>图10查看英伟达型号</center>
+
+<p>我电脑的GPU型号为GTX 1050Ti，其计 算能力为6.1GPU的计算能力可以在NVIDIA官网（<a href="https://developer.nvidia.com/cuda-gpus）查看。" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-gpus）查看。</a></p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t11.png" alt="在这里插入图片描述"></p>
+<center>图11</center>
+
+<p><strong>2.查看CUDA版本支持</strong><br>在安装CUDA前。先查看硬件可支持的版本，单击【右键】-&gt;【NVIDIA控制面板】可以进入NVIDIA控制面板。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t12.png" alt="在这里插入图片描述"></p>
+ <center>图12</center>
+
+<p>单击【帮助】-&gt;【系统信息】，进入系统系统后，单击【组件】，即可查看版本。</p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t13.png" alt="在这里插入图片描述"></p>
+ <center>图13</center>
+
+
+<p>  <img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t14.png" alt="在这里插入图片描述"></p>
+ <center>图14</center>
+
+<p>【注1】可通过NVIDIA控制面板首页的版本号388.75查看CUDA支持的版本。</p>
+<center>表 1 CUDA工具箱和兼容的驱动程序版本</center>
+
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/b1.png" alt="在这里插入图片描述"></p>
+<p>（表来源：<a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）</a><br>根据配置参数，笔者可以选择CUDA9.2以下的版本，笔者选择安装CUDA9.1。</p>
+<p>【注2】选择硬件不能支持的版本也许可以安装，但是有的功能是不能实现的，切记！<br>在NVIDIA官网（<a href="https://developer.nvidia.com/cuda-toolkit-archive）下载与系统对应的CUDA9.1安装包并安装。" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive）下载与系统对应的CUDA9.1安装包并安装。</a></p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t15.png" alt="在这里插入图片描述"></p>
+<center>图15</center>
+
+<p><strong>3.安装CUDA9.1</strong><br>CUDA安装包下载后接下来就是安装了。和普通的安装软件一样，笔者就不一一赘述了。</p>
+<p><strong>4.配置cuDNN v7.0.5</strong><br>cuDNN是用于深层神经网络的GPU加速的原始库。 在官网下载（<a href="https://developer.nvidia.com/rdp/cudnn-archive）与CUDA版本和操作系统对应的cuDNN，将其解压后放在CUDA9.1的安装路径下。" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-archive）与CUDA版本和操作系统对应的cuDNN，将其解压后放在CUDA9.1的安装路径下。</a></p>
+<p><img src="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - B/t16.png" alt="在这里插入图片描述"></p>
+<center>图16cuDNN下载
+
+![在这里插入图片描述](第2章 TensorFlow环境搭建 - B/t17.png)
+
+<center>图17</center>
+
+<p>其实解压出来的三个文件夹在CUDA的安装路径中是存在的，这三个文件夹里放的其实是使用cuDNN所需呀的文件。 </p>
+<p>【注】整个过程是不需要配置环境变量的，因为在安装CUDA的时候环境变量已经配置好了，配置cuDNN也只是把cuDNN需要的文件放到自动定义好的路径里面。</p>
+</center>
       
     </div>
     
@@ -472,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/TensorFlow/第2章 TensorFlow环境搭建 - B/" rel="next" title="《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - B">
-                <i class="fa fa-chevron-left"></i> 《人工智能-TensorFlow开发笔记》第2章 TensorFlow环境搭建 - B
+              <a href="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - A/" rel="next" title="《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - A">
+                <i class="fa fa-chevron-left"></i> 《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - A
               </a>
             
           </div>
@@ -481,10 +603,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/05/TensorFlow/第3章 TensorFlow入门/" rel="prev" title="《人工智能-TensorFlow开发笔记》第3章 TensorFlow入门">
-                《人工智能-TensorFlow开发笔记》第3章 TensorFlow入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,8 +659,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -646,6 +773,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Windows安装TensorFlow"><span class="nav-number">1.</span> <span class="nav-text">2.2 Windows安装TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Anaconda搭建Python环境"><span class="nav-number">1.1.</span> <span class="nav-text">2.2.1 Anaconda搭建Python环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-CPU版TensorFlow"><span class="nav-number">1.2.</span> <span class="nav-text">2.2.2 CPU版TensorFlow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-GPU环境搭建"><span class="nav-number">1.3.</span> <span class="nav-text">2.2.3 GPU环境搭建</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

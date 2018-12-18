@@ -144,7 +144,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图4.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图6.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第5章%20Tensorboard/图7.png">
-<meta property="og:updated_time" content="2018-12-15T14:13:09.373Z">
+<meta property="og:updated_time" content="2018-12-18T03:33:51.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》第5章 Tensorboard">
 <meta name="twitter:description" content="TensorBoard是一个可视化工具，能够有效地展示Tensorflow在运行过程中的计算图、各种指标随着时间的变化趋势以及训练中使用到的数据信息。 5.1 Tensorboard网络结构Tensorflow 自带 tensorboard ，可以自动显示我们所建造的神经网络流程图，有助于你发现编程中间的问题和疑问。  图1  同时我们也可以展开看每个layer中的一些具体的结构：    图2">
@@ -480,10 +480,7 @@
 
 <p><strong>本章参考代码</strong><br><a href="https://github.com/Ouxiaolong/TensorFlow/tree/master/5%20Tensorboard" target="_blank" rel="noopener">点击进入</a></p>
 <p><strong>TensorFlow中API版本容错</strong></p>
-<h1 id="writer-tf-train-SummaryWriter-“logs-“-sess-graph-新版的TensorFlow已经弃用"><a href="#writer-tf-train-SummaryWriter-“logs-“-sess-graph-新版的TensorFlow已经弃用" class="headerlink" title="writer = tf.train.SummaryWriter(“logs/“, sess.graph)#新版的TensorFlow已经弃用"></a>writer = tf.train.SummaryWriter(“logs/“, sess.graph)#新版的TensorFlow已经弃用</h1><p>writer = tf.summary.FileWriter(“logs/“,sess.graph)#加载文件</p>
-<h1 id="tf-histogram-summary-layer-name-‘-weights’-Weights-新版已经废弃"><a href="#tf-histogram-summary-layer-name-‘-weights’-Weights-新版已经废弃" class="headerlink" title="tf.histogram_summary(layer_name + ‘/weights’, Weights)#新版已经废弃"></a>tf.histogram_summary(layer_name + ‘/weights’, Weights)#新版已经废弃</h1><p>tf.summary.histogram(layer_name + ‘/weights’, Weights)</p>
-<h1 id="tf-scalar-summary-‘loss’-loss-新版已经废弃"><a href="#tf-scalar-summary-‘loss’-loss-新版已经废弃" class="headerlink" title="tf.scalar_summary(‘loss’, loss)#新版已经废弃"></a>tf.scalar_summary(‘loss’, loss)#新版已经废弃</h1><p>tf.summary.scalar(‘loss’, loss)</p>
-<h1 id="merged-tf-merge-all-summaries-新版已经废弃"><a href="#merged-tf-merge-all-summaries-新版已经废弃" class="headerlink" title="merged = tf.merge_all_summaries()#新版已经废弃"></a>merged = tf.merge_all_summaries()#新版已经废弃</h1><p>merged = tf.summary.merge_all()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#writer = tf.train.SummaryWriter(&quot;logs/&quot;, sess.graph)#新版的TensorFlow已经弃用</span><br><span class="line">writer = tf.summary.FileWriter(&quot;logs/&quot;,sess.graph)#加载文件</span><br><span class="line"></span><br><span class="line"> #tf.histogram_summary(layer_name + &apos;/weights&apos;, Weights)#新版已经废弃</span><br><span class="line">tf.summary.histogram(layer_name + &apos;/weights&apos;, Weights)</span><br><span class="line"></span><br><span class="line"> #tf.scalar_summary(&apos;loss&apos;, loss)#新版已经废弃</span><br><span class="line">tf.summary.scalar(&apos;loss&apos;, loss)</span><br><span class="line"></span><br><span class="line"> #merged = tf.merge_all_summaries()#新版已经废弃</span><br><span class="line">merged = tf.summary.merge_all()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -707,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Tensorboard网络结构"><span class="nav-number">1.</span> <span class="nav-text">5.1 Tensorboard网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Tensorboard网络运行"><span class="nav-number">2.</span> <span class="nav-text">5.2 Tensorboard网络运行</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#writer-tf-train-SummaryWriter-“logs-“-sess-graph-新版的TensorFlow已经弃用"><span class="nav-number"></span> <span class="nav-text">writer = tf.train.SummaryWriter(“logs/“, sess.graph)#新版的TensorFlow已经弃用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-histogram-summary-layer-name-‘-weights’-Weights-新版已经废弃"><span class="nav-number"></span> <span class="nav-text">tf.histogram_summary(layer_name + ‘/weights’, Weights)#新版已经废弃</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-scalar-summary-‘loss’-loss-新版已经废弃"><span class="nav-number"></span> <span class="nav-text">tf.scalar_summary(‘loss’, loss)#新版已经废弃</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merged-tf-merge-all-summaries-新版已经废弃"><span class="nav-number"></span> <span class="nav-text">merged = tf.merge_all_summaries()#新版已经废弃</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Tensorboard网络结构"><span class="nav-number">1.</span> <span class="nav-text">5.1 Tensorboard网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Tensorboard网络运行"><span class="nav-number">2.</span> <span class="nav-text">5.2 Tensorboard网络运行</span></a></li></ol></div>
             
 
           </div>

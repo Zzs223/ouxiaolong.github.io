@@ -137,7 +137,7 @@
 <meta property="og:site_name" content="BruceOu的博客">
 <meta property="og:description" content="首先需要明确损失函数与代价函数的区别与联系。在 Coursera：Neural Networks and Deep Learning 课程中，Andrew Ng 给出的解释如下： The loss function computes the error for a single training example; the cost function is the average of the lo">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://img-blog.csdn.net/20180705164209943?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://yoursite.com/2018/12/15/TensorFlow/第6章%20损失函数与代价函数/t1.png">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705164315601?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705164348607?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705165349238?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -151,13 +151,13 @@
 <meta property="og:image" content="https://img-blog.csdn.net/20180705170058497?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705170132257?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705170214404?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/2018070517035215?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://yoursite.com/2018/12/15/TensorFlow/第6章%20损失函数与代价函数/t2.png">
 <meta property="og:image" content="https://img-blog.csdn.net/20180705171212390?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-12-18T03:25:53.595Z">
+<meta property="og:updated_time" content="2018-12-18T04:53:16.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》第6章 损失函数与代价函数">
 <meta name="twitter:description" content="首先需要明确损失函数与代价函数的区别与联系。在 Coursera：Neural Networks and Deep Learning 课程中，Andrew Ng 给出的解释如下： The loss function computes the error for a single training example; the cost function is the average of the lo">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180705164209943?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/15/TensorFlow/第6章%20损失函数与代价函数/t1.png">
 
 
 
@@ -464,7 +464,7 @@
 <p>所以说两个不是一个东西，很多人把它们混为一谈这是不对的。好了，开始今天的正题吧。</p>
 <h2 id="6-1常见的损失函数"><a href="#6-1常见的损失函数" class="headerlink" title="6.1常见的损失函数"></a>6.1常见的损失函数</h2><p>损失函数（loss function）是用来估量你模型的预测值 f(x)与真实值 Y的不一致程度，它是一个非负实值函数,通常使用 来表示，损失函数越小，模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p>
 <script type="math/tex; mode=display">\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，$L$代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是$L1$，也可以是$L2$，或者其他的正则函数。整个式子表示的意思是找到使目标函数最小时的θ值。下面主要列出几种常见的损失函数。<br>【注】Object Function（目标函数 ）定义为：Cost Function + 正则化项。目标函数(Objective function)就是有某个（最优化）目标的函数。</p>
-<p><img src="https://img-blog.csdn.net/20180705164209943?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="/2018/12/15/TensorFlow/第6章 损失函数与代价函数/t1.png" alt="这里写图片描述"></p>
 <center>图1常见的损失函数</center>
 
 <h3 id="6-1-1-0-1损失函数和绝对值损失函数"><a href="#6-1-1-0-1损失函数和绝对值损失函数" class="headerlink" title="6.1.1 0-1损失函数和绝对值损失函数"></a>6.1.1 0-1损失函数和绝对值损失函数</h3><p>可以看从图1看出，该损失函数的意义就是，当预测错误时，损失函数值为1，预测正确时，损失函数值为0。该损失函数不考虑预测值和真实值的误差程度，也就是只要预测错误，预测错误差一点和差很多是一样的。</p>
@@ -505,7 +505,7 @@
 <p><img src="https://img-blog.csdn.net/20180705170214404?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
 <p>可以看出，当$|y|&gt;=1$时，$L(y)=0$。</p>
 <p>更多内容，参考<a href="https://en.wikipedia.org/wiki/Hinge_loss" target="_blank" rel="noopener">Hinge-loss。</a><br>补充一下：在libsvm中一共有4中核函数可以选择，对应的是-t参数分别是：<br>    线性核；<br>    多项式核；<br>    RBF核；<br>    sigmoid核。</p>
-<p><img src="https://img-blog.csdn.net/2018070517035215?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMxNjIwMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="/2018/12/15/TensorFlow/第6章 损失函数与代价函数/t2.png" alt="这里写图片描述"></p>
  <center>图2</center>
 
 <h2 id="6-2常见的代价函数"><a href="#6-2常见的代价函数" class="headerlink" title="6.2常见的代价函数"></a>6.2常见的代价函数</h2><p>前文介绍了常见的损失函数，接下来介绍常见的代价函数。这是在前文的基础上推到的。</p>
@@ -559,6 +559,10 @@ $Y-f(X)$表示的是残差，整个式子表示的是残差的平方和，而我
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/18/TensorFlow/第2章 TensorFlow环境搭建 - A/" rel="prev" title="《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - A">
+                《人工智能-TensorFlow开发笔记》 第2章 TensorFlow环境搭建 - A <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
