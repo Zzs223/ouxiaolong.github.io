@@ -137,10 +137,16 @@
 <meta property="og:site_name" content="BruceOu的博客">
 <meta property="og:description" content="[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80722367) [B站配套视频](https://www.bilibili.com/video/av25128789)   Hexo官方：https://hexo.io/Hexo官方(中文)：https://hexo.io/zh-cn/ 前文笔者使用Hexo和GitHub搭">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-15T14:02:16.562Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图0.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图4.png">
+<meta property="og:updated_time" content="2018-12-18T05:48:38.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《WEB开发-HEXO博客搭建》第3章 Hexo博客域名添加">
 <meta name="twitter:description" content="[CSDN博客地址](https://blog.csdn.net/u013162035/article/details/80722367) [B站配套视频](https://www.bilibili.com/video/av25128789)   Hexo官方：https://hexo.io/Hexo官方(中文)：https://hexo.io/zh-cn/ 前文笔者使用Hexo和GitHub搭">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/Hexo/第3章%20Hexo博客域名添加/图0.png">
 
 
 
@@ -448,26 +454,28 @@
 <p>前文笔者使用Hexo和GitHub搭建个人博客空间，使用markdown写博客既方便，展示出来的样式也还算满意，GitHub的域名有点长，还有就是访问速度比较慢，今天就试着把访问域名替换成自己的域名。废话不说，开干吧。</p>
 <p><strong>1.申请个人域名</strong><br>首先得先拥有一个自己的域名，我用的是阿里云里买的一个以.cn为后缀的域名时送了一个.top结尾的域名，笔者已经使用了.cn结尾的域名，笔者买的期限是3年，也就一百一块，愿意花这个钱就继续往下看吧。<br>关于阿里云建站请看这篇文章：<a href="https://blog.csdn.net/u013162035/article/details/80722347" target="_blank" rel="noopener">https://blog.csdn.net/u013162035/article/details/80722347</a></p>
 <p><strong>2.域名添加 DNS 解析</strong><br>github官网提供的主机ip地址：192.30.253.113。<br>域名查询：<a href="http://site.ip138.com/" target="_blank" rel="noopener">http://site.ip138.com/</a><br>但是我们要绑定自己的域名，就需要绑定自己的IP，可以通以下命令查看：</p>
-<pre>$ping 你的用户名.github.io</pre>
- ![这里写图片描述](第3章 Hexo博客域名添加/图0.png)
-将这个作为主机地址，给域名的DNS解析添加记录。
-登录阿里云，到域名列表，选择要绑定的域名。
-
- <center>![这里写图片描述](第3章 Hexo博客域名添加/图1.png)</center>
+<p><pre>$ping 你的用户名.github.io</pre><br> <img src="/2018/12/05/Hexo/第3章 Hexo博客域名添加/图0.png" alt="这里写图片描述"><br>将这个作为主机地址，给域名的DNS解析添加记录。<br>登录阿里云，到域名列表，选择要绑定的域名。</p>
+<p> <img src="/2018/12/05/Hexo/第3章 Hexo博客域名添加/图1.png" alt="这里写图片描述"></p>
  <center>图1域名选择</center>
-接下来，就是在【域名解析】中点击【添加记录】，添加两条记录，添加一个 A记录，然后再添加一个 CNAME记录主机地址填的是我们原本用来访问github博客的地址： githubname.github.io。
-  <center>![这里写图片描述](第3章 Hexo博客域名添加/图2.png) </center>
+
+<p>接下来，就是在【域名解析】中点击【添加记录】，添加两条记录，添加一个 A记录，然后再添加一个 CNAME记录主机地址填的是我们原本用来访问github博客的地址： githubname.github.io。</p>
+<p>  <img src="/2018/12/05/Hexo/第3章 Hexo博客域名添加/图2.png" alt="这里写图片描述"> </p>
  <center>图2域名解析添加记录 </center>
 
-**3.创建 CNAME 文件**
-在hexo本地目录 source 目录下面新建一个文件，取名为 CNAME (无后缀)，内容就是上面所说到的自己的域名如下：
-  <center>![这里写图片描述](第3章 Hexo博客域名添加/图3.png)</center>
+<p><strong>3.创建 CNAME 文件</strong><br>在hexo本地目录 source 目录下面新建一个文件，取名为 CNAME (无后缀)，内容就是上面所说到的自己的域名如下：</p>
+<p> <img src="/2018/12/05/Hexo/第3章 Hexo博客域名添加/图3.png" alt="这里写图片描述"></p>
  <center>图3</center>
-运行hexo指令使配置修改起效：
-<pre>$hexo g  //会在public中生成一个CNAME文件</pre>
-<pre>$hexo d  //修改内容提交到github博客上</pre>
 
-<p><strong>4.测试</strong><br>假如设置成功，此时在浏览器中输入我们的域名可以看到网页啦。<br>  <center>![这里写图片描述](第3章 Hexo博客域名添加/图4.png)</center><br> <center>图4 </center></p>
+<p>运行hexo指令使配置修改起效：</p>
+<p>$hexo g  //会在public中生成一个CNAME文件<br>$hexo d  //修改内容提交到github博客上</p>
+<p><strong>4.测试</strong><br>假如设置成功，此时在浏览器中输入我们的域名可以看到网页啦。</p>
+<p><img src="/2018/12/05/Hexo/第3章 Hexo博客域名添加/图4.png" alt="这里写图片描述"></p>
+ <center>图4 </center>
+
+
+
+
+
 
       
     </div>
