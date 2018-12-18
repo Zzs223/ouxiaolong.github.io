@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Times New Roman:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git,GitHub,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="7.1Github库的创建登录成功后界面，没有账户的先注册一个账户。首先要创建仓库，要想使用github来托管自己的项目代码，因此先要创建一个仓库，仓库分公开的和私有的，公开的是免费的，私有的是收费的，我使用的是公开的仓库，如下创建方式  图1点击New repository按钮，如果是首次使用会要求确认邮箱，确认后。弹出如下界面，第一行填仓库名，这里就随便叫Test了，第二行是对这个仓库的描述，">
+<meta name="keywords" content="git,GitHub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Git与Github使用笔记》第7章 Git和Github的使用">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/Git/第7章 Git和Github的使用/index.html">
+<meta property="og:site_name" content="BruceOu的博客">
+<meta property="og:description" content="7.1Github库的创建登录成功后界面，没有账户的先注册一个账户。首先要创建仓库，要想使用github来托管自己的项目代码，因此先要创建一个仓库，仓库分公开的和私有的，公开的是免费的，私有的是收费的，我使用的是公开的仓库，如下创建方式  图1点击New repository按钮，如果是首次使用会要求确认邮箱，确认后。弹出如下界面，第一行填仓库名，这里就随便叫Test了，第二行是对这个仓库的描述，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图5.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图6.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图7.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图8.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图9.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图10.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图11.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图12.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图13.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图14.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图15.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图16.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图17.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图18.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图19.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图20.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图21.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图22.png">
+<meta property="og:updated_time" content="2018-12-15T14:00:09.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Git与Github使用笔记》第7章 Git和Github的使用">
+<meta name="twitter:description" content="7.1Github库的创建登录成功后界面，没有账户的先注册一个账户。首先要创建仓库，要想使用github来托管自己的项目代码，因此先要创建一个仓库，仓库分公开的和私有的，公开的是免费的，私有的是收费的，我使用的是公开的仓库，如下创建方式  图1点击New repository按钮，如果是首次使用会要求确认邮箱，确认后。弹出如下界面，第一行填仓库名，这里就随便叫Test了，第二行是对这个仓库的描述，">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/Git/第7章%20Git和Github的使用/图1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/05/Git/第7章 Git和Github的使用/">
+
+
+
+
+
+  <title>《Git与Github使用笔记》第7章 Git和Github的使用 | BruceOu的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BruceOu的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/Git/第7章 Git和Github的使用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BruceOu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BruceOu的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《Git与Github使用笔记》第7章 Git和Github的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T16:36:29+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/git-GitHub/" itemprop="url" rel="index">
+                    <span itemprop="name">git&GitHub</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="7-1Github库的创建"><a href="#7-1Github库的创建" class="headerlink" title="7.1Github库的创建"></a>7.1Github库的创建</h2><p>登录成功后界面，没有账户的先注册一个账户。首先要创建仓库，要想使用github来托管自己的项目代码，因此先要创建一个仓库，仓库分公开的和私有的，公开的是免费的，私有的是收费的，我使用的是公开的仓库，如下创建方式<br> <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图1.png" alt="这里写图片描述"></center><br> <center>图1</center><br>点击New repository按钮，如果是首次使用会要求确认邮箱，确认后。弹出如下界面，第一行填仓库名，这里就随便叫Test了，第二行是对这个仓库的描述，之后那个Public就是公共仓库的意思，接下来的README就是在仓库里创建一个README文件，可以往里写一些介绍你这个项目的功能之类的东西，再下面那个Add gitignore按钮，可以选择你这个项目是用什么语言之类的,我这里选择了，后面那个License我没有选，点击”Create repository”。<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图2.png" alt="这里写图片描述"></center><br> <center>图2创建库</center><br>创建仓库成功后,界面如下显示,可以点击README.md来编译这个文件。<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图3.png" alt="这里写图片描述"></center><br> <center>图3</center><br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图4.png" alt="这里写图片描述"></center><br> <center>图4</center></p>
+<h2 id="7-2配置"><a href="#7-2配置" class="headerlink" title="7.2配置"></a>7.2配置</h2><h3 id="7-2-1-Git配置"><a href="#7-2-1-Git配置" class="headerlink" title="7.2.1 Git配置"></a>7.2.1 Git配置</h3><p>1.Git bash打开之后输入命令如下：<br>ssh-keygen -t rsa -C “邮箱地址”<br>【注意】ssh-keygen之间是没有空格的,其他的之间是有空格的。<br>GitHub邮箱：该命令后面的邮箱就是你的注册邮箱。<br>路径选择：使用该命令之后, 会出现提示选择ssh-key生成路径, 这里直接点回车默认即可, 生成的ssh-key在默认路径中。<br>密码确认：这里我们不使用密码进行登录, 用密码太麻烦，直接回车。当然，如果你想使用密码登录，那就输入密码（密码他不能太短）之后回车。<br>操作显示截图如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图5.png" alt="这里写图片描述"></center><br> <center>图5</center><br>2.在上面显示的默认路径下找到生成的Key，我的默认路径是“C:\Users\ouxiaolong.ssh”，如果不知道自己的默认路径，可以输入“pwd”命令查看。<br>3.使用记事本或者UE工具打开“id_rsa.pub”文件, 将该文件中的内容复制到GIT服务器上。进入GitHub网站：登录GitHub, 选择“Settings”，操作截图显示如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图6.png" alt="这里写图片描述"></center><br> <center>图6</center><br>左侧选择“SSH and GPG keys”，操作截图显示如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图7.png" alt="这里写图片描述"></center><br> <center>图7</center><br>4.点击右侧的“New SSH key”，在显示的输入框中将前面生成的key输入进去，操作截图如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图8.png" alt="这里写图片描述"></center><br> <center>图8</center><br>输入之后点击“Add SSH key”<br>5.点击添加之后，显示截图如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图9.png" alt="这里写图片描述"></center><br> <center>图9</center><br>同时，我们配置的邮箱也会收到相应的邮件，截图如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图10.png" alt="这里写图片描述"></center><br> <center>图10</center><br>这样，我们本地的key就添加到GitHub上了。当然，如果你对应的Git服务器是你们公司或者你自己搭建的，那只需要登录相应的Git服务器，然后将你本地生成的key添加上去即可。<br>6.验证是否配置成功<br>输入命令：<br>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>验证时可能让你输入YES。<br>成功提示 : 如果出现“Hi ouxiaolong! You’ve successfully authenticated, but GitHub does not provide shell access.”就说明配置成功，可以连接上GitHub，操作截图显示如下：<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图11.png" alt="这里写图片描述"></center><br> <center>图11</center></p>
+<p>7.配置本地用户和邮箱<br>我们需要设置一个用户名和邮箱，这是用来上传本地仓库到GitHub时，在GitHub中显示代码上传者的。<br>配置命令如下：<br>git config –global user.name “xxx” //设置用户名<br>git config –global user.email “邮箱” //设置邮箱<br>操作截图显示如下：<br>到这里，我们的Git客户端就配置完成了，并且我们本地的key也成功上传到Git服务端了。<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图12.png" alt="这里写图片描述"></center><br> <center>图12</center></p>
+<h3 id="7-2-2使用Git-Github"><a href="#7-2-2使用Git-Github" class="headerlink" title="7.2.2使用Git + Github"></a>7.2.2使用Git + Github</h3><p>到现在为止，我们就算把Github配置完了，Git的相关操作不懂参看前几章，这里就不在赘述了。现在就来托管我们的项目吧，刚才我们已经在github上面创建了一个叫Smart_Home的仓库，那么我们现在就在本地创建一个目录，来管理这个仓库。</p>
+<p><font size="4" color="#DD0000">    随意创建了一个目录叫Git</font><br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图13.png" alt="这里写图片描述"></center><br> <center>图13</center></p>
+<p><font size="4" color="#DD0000">    右击目录，出现的菜单中有Git Bash Here，点击它。</font><br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图14.png" alt="这里写图片描述"></center><br> <center>图14</center></p>
+<p><font size="4" color="#DD0000">    这时候就在这个目录上打开了我们的终端。</font><br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图15.png" alt="这里写图片描述"></center><br> <center>图15</center></p>
+<p><font size="4" color="#DD0000">    这时候输入 git init，来完成初始化工作。</font><br>命令：git init//初始化<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图16.png" alt="这里写图片描述"></center><br> <center>图16</center><br>命令：git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Ouxiaolong/Smart_Home.git<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图17.png" alt="这里写图片描述"></center><br> <center>图17</center><br>命令：git pull <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: Ouxiaolong/Smart_Home.git<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图18.png" alt="这里写图片描述"></center><br> <center>图18</center></p>
+<p><font size="4" color="#DD0000">    上传本地文件到仓库</font><br>首先执行增加命令，如下：<br>命令：git add .</p>
+<p><center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图19.png" alt="这里写图片描述"></center></p>
+<p><center>图19</center><br>add后面加了一个点，是想要提交所有文件，如果想提交指定的文件，可以写文件名，执行完增加命令后，要执行提交命令，如下：<br>命令：git commit –m “版本号（自定义）”<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图20.png" alt="这里写图片描述"></center><br> <center>图20</center><br>-m后面跟提示信息，这个提示信息是一定要写的，不仅是规则，同时也方便我们记录我们提交的过程，写清晰为什么提交或修改了什么是非常有用的，提交完成后，我们就要把它推送到远程仓库上去了，命令如下：<br>命令：git push <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: Ouxiaolong/Smart_Home.git<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图21.png" alt="这里写图片描述"></center><br> <center>图21</center><br>再到github上看到如下显示表示添加成功。<br>  <center><img src="/2018/12/05/Git/第7章 Git和Github的使用/图22.png" alt="这里写图片描述"></center><br> <center>图22</center><br>这样就完成了我们要做的所有任务。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/Git/第6章 copssh/" rel="next" title="《Git与Github使用笔记》第6章 copssh">
+                <i class="fa fa-chevron-left"></i> 《Git与Github使用笔记》第6章 copssh
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/Git/第8章 github常见操作和常见错误/" rel="prev" title="《Git与Github使用笔记》第8章 github常见操作和常见错误">
+                《Git与Github使用笔记》第8章 github常见操作和常见错误 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzMzMC8xMzg2NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BruceOu">
+            
+              <p class="site-author-name" itemprop="name">BruceOu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ouxiaolong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u013162035" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.bruceou.cn/" target="_blank" title="BruceOu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>BruceOu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/Bruceoxl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bruceou.coding.me/" title="BruceOu的Coding博客" target="_blank">BruceOu的Coding博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1Github库的创建"><span class="nav-number">1.</span> <span class="nav-text">7.1Github库的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2配置"><span class="nav-number">2.</span> <span class="nav-text">7.2配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-1-Git配置"><span class="nav-number">2.1.</span> <span class="nav-text">7.2.1 Git配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-2使用Git-Github"><span class="nav-number">2.2.</span> <span class="nav-text">7.2.2使用Git + Github</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018-06 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BruceOu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

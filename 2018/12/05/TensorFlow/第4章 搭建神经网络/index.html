@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Arial:300,300italic,400,400italic,700,700italic|Times New Roman:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="TensorFlow,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="4.1神经网络基本概念前文，笔者带领大家建立了一个线性模型，并通过TensorFlow将其实现，前面只是介绍了TensorFlow的基本概念。本文将介绍神经网络的基本概念，神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《人工智能-TensorFlow开发笔记》第4章 搭建神经网络">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/TensorFlow/第4章 搭建神经网络/index.html">
+<meta property="og:site_name" content="BruceOu的博客">
+<meta property="og:description" content="4.1神经网络基本概念前文，笔者带领大家建立了一个线性模型，并通过TensorFlow将其实现，前面只是介绍了TensorFlow的基本概念。本文将介绍神经网络的基本概念，神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图5.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图6.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图7.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图8.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图9.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图10.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图11.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图12.png">
+<meta property="og:updated_time" content="2018-12-15T14:18:45.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《人工智能-TensorFlow开发笔记》第4章 搭建神经网络">
+<meta name="twitter:description" content="4.1神经网络基本概念前文，笔者带领大家建立了一个线性模型，并通过TensorFlow将其实现，前面只是介绍了TensorFlow的基本概念。本文将介绍神经网络的基本概念，神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/TensorFlow/第4章%20搭建神经网络/图1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/05/TensorFlow/第4章 搭建神经网络/">
+
+
+
+
+
+  <title>《人工智能-TensorFlow开发笔记》第4章 搭建神经网络 | BruceOu的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BruceOu的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/TensorFlow/第4章 搭建神经网络/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BruceOu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BruceOu的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《人工智能-TensorFlow开发笔记》第4章 搭建神经网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T16:36:29+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="4-1神经网络基本概念"><a href="#4-1神经网络基本概念" class="headerlink" title="4.1神经网络基本概念"></a>4.1神经网络基本概念</h2><p>前文，笔者带领大家建立了一个线性模型，并通过TensorFlow将其实现，前面只是介绍了TensorFlow的基本概念。本文将介绍神经网络的基本概念，神经网络是一种数学模型，是存在于计算机的神经系统，由大量的神经元相连接并进行计算，在外界信息的基础上，改变内部的结构，常用来对输入和输出间复杂的关系进行建模。神经网络由大量的节点和之间的联系构成，负责传递信息和加工信息，神经元也可以通过训练而被强化。</p>
+<p>下图就是一个神经网络系统，它由很多层构成。输入层就是负责接收信息，比如说一只猫的图片。输出层就是计算机对这个输入信息的认知，它是不是猫。隐藏层就是对输入信息的加工处理。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图1.png" alt="这里写图片描述"></p>
+<center>图1</center>
+
+<p>神经网络是如何被训练的，首先它需要很多数据。比如他要判断一张图片是不是猫。就要输入上千万张的带有标签的猫猫狗狗的图片，然后再训练上千万次。</p>
+<p>神经网络训练的结果有对的也有错的，如果是错误的结果，将被当做非常宝贵的经验，那么是如何从经验中学习的呢？就是对比正确答案和错误答案之间的区别，然后把这个区别反向的传递回去，对每个相应的神经元进行一点点的改变。那么下一次在训练的时候就可以用已经改进一点点的神经元去得到稍微准确一点的结果。</p>
+<p>神经网络是如何训练的呢？每个神经元都有属于它的激活函数，用这些函数给计算机一个刺激行为。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图2.png" alt="这里写图片描述"></p>
+<center>图2</center>
+
+<p>在第一次给计算机看猫的图片的时候，只有部分的神经元被激活，被激活的神经元所传递的信息是对输出结果最有价值的信息。如果输出的结果被判定为是狗，也就是说是错误的了，那么就会修改神经元，一些容易被激活的神经元会变得迟钝，另外一些神经元会变得敏感。这样一次次的训练下去，所有神经元的参数都在被改变，它们变得对真正重要的信息更为敏感。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图3.png" alt="这里写图片描述"></p>
+<center>图3</center>
+
+<p>好了，总结一下，不管有多少层网络，宏观上看就三层：输入层，隐藏层和输出层；在输入层输入数据，然后数据飞到隐藏层飞到输出层，用梯度下降处理，梯度下降会对几个参数进行更新和完善，更新后的参数再次跑到隐藏层去学习，这样一直循环直到结果收敛。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图4.png" alt="这里写图片描述"></p>
+<center>图4 TensorFlow的模型结构</center>
+
+<p><a href="https://upload-images.jianshu.io/upload_images/1667471-ec1e03205a5a5bf2.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/252" target="_blank" rel="noopener">动图链接</a></p>
+<h2 id="4-2搭建神经网络的基本流程"><a href="#4-2搭建神经网络的基本流程" class="headerlink" title="4.2搭建神经网络的基本流程"></a>4.2搭建神经网络的基本流程</h2><p><strong>搭建神经网络基本流程：</strong></p>
+<blockquote>
+<p>    训练的数据；<br>    定义节点准备接收数据；<br>    定义神经层：隐藏层和预测层<br>    定义 loss 表达式<br>    选择 optimizer 使 loss 达到最小</p>
+</blockquote>
+<p>本文将在前文的基础上，添加神经层，在具体实现基本流程之前，我们先明确几个基本概念。</p>
+<p><strong>    激励函数</strong><br>激励函数一般用于神经网络的层与层之间，上一层的输出通过激励函数的转换之后输入到下一层中。神经网络模型是非线性的，如果没有使用激励函数，那么每一层实际上都相当于矩阵相乘。经过非线性的激励函数作用，使得神经网络有了更多的表现力。</p>
+<p>那么为何要使用激励函数呢？因为线性函数有一个特点，那就是线性函数的组合还是线性函数，这也就以为这不论你所设计的神经网络有多深，多么复杂，只要里面用到的激励函数是线性函数，那么这些层层之间都是线性函数的一个组合，最终整个网络依然是线性的，可以用一个矩阵来代替，跟只有一层网络是没有区别的，所以线性激励函数的表达能力是有限的，不能描述现实生活中存在的大部分的问题，故我们采用非线性的激励函数。</p>
+<p>例如一个神经元对猫的眼睛敏感，那当它看到猫的眼睛的时候，就被激励了，相应的参数就会被调优，它的贡献就会越大。下面是几种常见的激活函数，x轴表示传递过来的值，y轴表示它传递出去的值。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图5.png" alt="这里写图片描述"></p>
+<center>图5激励函数</center>
+
+<p>激励函数在预测层，判断哪些值要被送到预测结果那里：</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图6.png" alt="这里写图片描述"></p>
+<center>图6</center>
+
+<p>对于激励函数的理解：<a href="https://blog.csdn.net/hyman_yx/article/details/51789186" target="_blank" rel="noopener">https://blog.csdn.net/hyman_yx/article/details/51789186</a></p>
+<p><strong>    神经层添加</strong><br>神经网络有很多层，那么神经层是如何添加的呢？关于更详细的理论请自行查阅吧，笔者接下来直接上代码。</p>
+<p>输入参数有 inputs, in_size, out_size, 和 activation_function。具体实现代码如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#添加层</span><br><span class="line">def add_layer(inputs, in_size, out_size, activation_function=None):</span><br><span class="line">    </span><br><span class="line">    #线性模型</span><br><span class="line">    Weights = tf.Variable(tf.random_normal([in_size, out_size]))</span><br><span class="line">    biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)</span><br><span class="line">    Wx_plus_b = tf.matmul(inputs, Weights) + biases</span><br><span class="line">    </span><br><span class="line">    if activation_function is None:</span><br><span class="line">        outputs = Wx_plus_b</span><br><span class="line">    else:</span><br><span class="line">        outputs = activation_function(Wx_plus_b)</span><br><span class="line">        </span><br><span class="line">    return outputs</span><br></pre></td></tr></table></figure></p>
+<p>好了，看完整的代码吧。</p>
+<p>【代码参看附件test1_build_network.py】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">#添加层</span><br><span class="line">def add_layer(inputs, in_size, out_size, activation_function=None):</span><br><span class="line">    </span><br><span class="line">    #线性模型</span><br><span class="line">    Weights = tf.Variable(tf.random_normal([in_size, out_size]))</span><br><span class="line">    biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)</span><br><span class="line">    Wx_plus_b = tf.matmul(inputs, Weights) + biases</span><br><span class="line">    </span><br><span class="line">    if activation_function is None:</span><br><span class="line">        outputs = Wx_plus_b</span><br><span class="line">    else:</span><br><span class="line">        outputs = activation_function(Wx_plus_b)</span><br><span class="line">        </span><br><span class="line">    return outputs</span><br><span class="line"></span><br><span class="line">#【1】创建原始数据，及要训练的数据</span><br><span class="line">x_data = np.linspace(-1,1,300)[:, np.newaxis]</span><br><span class="line">noise = np.random.normal(0, 0.05, x_data.shape)</span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise</span><br><span class="line"></span><br><span class="line">#【2】定义节点准备接收数据</span><br><span class="line">xs = tf.placeholder(tf.float32, [None, 1])</span><br><span class="line">ys = tf.placeholder(tf.float32, [None, 1])</span><br><span class="line"></span><br><span class="line">#【3】定义神经层：隐藏层和预测层</span><br><span class="line">#添加隐藏层，输入值是 xs，在隐藏层有 10 个神经元  </span><br><span class="line">l1 = add_layer(xs, 1, 10, activation_function=tf.nn.relu)</span><br><span class="line">#添加输出层，输入值是隐藏层 l1，在预测层输出 1 个结果</span><br><span class="line">prediction = add_layer(l1, 10, 1, activation_function=None)</span><br><span class="line"></span><br><span class="line">#【4】定义损失函数，误差的均方差</span><br><span class="line">loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),</span><br><span class="line">                     reduction_indices=[1]))</span><br><span class="line">#【5】选择 optimizer 使 loss 达到最小，选择梯度下降的方法训练数据</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br><span class="line"></span><br><span class="line">#【6】初始化数据，tf 的必备步骤，主要声明了变量，就必须初始化才能用</span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">#【7】创建Session会话。启动图</span><br><span class="line">sess = tf.Session()</span><br><span class="line">#上面定义的都没有运算，直到 sess.run 才会开始运算</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line">#【8】训练模型的到结果，迭代，反复执行上面的最小化损失函数这一操作，拟合数据</span><br><span class="line">for i in range(1000):</span><br><span class="line">    #train_step 和 loss 都是由 placeholder 定义的运算，所以这里要用 feed 传入参数</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:</span><br><span class="line">        # to see the step improvement</span><br><span class="line">        print(sess.run(loss, feed_dict=&#123;xs: x_data, ys: y_data&#125;))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">0.7016641</span><br><span class="line">0.020532325</span><br><span class="line">0.012887432</span><br><span class="line">0.020628596</span><br><span class="line">0.016825143</span><br><span class="line">0.0070344894</span><br><span class="line">0.0058545996</span><br><span class="line">0.0054254485</span><br><span class="line">0.0051840018</span><br><span class="line">0.005022936</span><br><span class="line">0.0049506323</span><br><span class="line">0.005070546</span><br><span class="line">0.006097332</span><br><span class="line">0.011496162</span><br><span class="line">0.010251511</span><br><span class="line">0.0056009768</span><br><span class="line">0.004545993</span><br><span class="line">0.0043214685</span><br><span class="line">0.004266932</span><br><span class="line">0.004239731</span><br></pre></td></tr></table></figure></p>
+<p>在前文中，我们成功搭建了一个线性模型，出来的结果都是数据，是不是很抽象呢，笔者也觉得，那么有没有可视化的工具呢，当然有啦，你首先的安装matplotlib包。笔者用的是Anaconda 集成开发工具，你只需在Anaconda Navigator下的TensorFlow中安装matplotlib包即可。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图7.png" alt="这里写图片描述"></p>
+<center>图7安装matplotlib</center>
+
+<p>matplotlib 可视化 构建图形，用散点图描述真实数据之间的关系。显示原始数据的散点图代码如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># plot the real data</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">ax.scatter(x_data, y_data)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>散点图的结果为：</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图8.png" alt="这里写图片描述"></p>
+<center>图8散点图结果</center>
+
+<p>接下来，我们来显示预测数据。每隔50次训练刷新一次图形，用红色、宽度为5的线来显示我们的预测数据和输入之间的关系，并暂停0.1s。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1000):</span><br><span class="line">    # training</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:</span><br><span class="line">        # to visualize the result and improvement</span><br><span class="line">        try:</span><br><span class="line">            ax.lines.remove(lines[0])</span><br><span class="line">        except Exception:</span><br><span class="line">            pass</span><br><span class="line">prediction_value = sess.run(prediction, feed_dict=&#123;xs: x_data&#125;)</span><br><span class="line"># plot the prediction</span><br><span class="line">lines = ax.plot(x_data, prediction_value, &apos;r-&apos;, lw=5)</span><br><span class="line">plt.pause(0.1)</span><br></pre></td></tr></table></figure></p>
+<p>完整代码如下：<br>【代码参考附件test2_plut_result.py】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt#需要安装才可使用</span><br><span class="line"></span><br><span class="line">#添加层</span><br><span class="line">def add_layer(inputs, in_size, out_size, activation_function=None):</span><br><span class="line">    </span><br><span class="line">    #线性模型</span><br><span class="line">    Weights = tf.Variable(tf.random_normal([in_size, out_size]))</span><br><span class="line">    biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)</span><br><span class="line">    Wx_plus_b = tf.matmul(inputs, Weights) + biases</span><br><span class="line">    </span><br><span class="line">    if activation_function is None:</span><br><span class="line">        outputs = Wx_plus_b</span><br><span class="line">    else:</span><br><span class="line">        outputs = activation_function(Wx_plus_b)</span><br><span class="line">        </span><br><span class="line">    return outputs</span><br><span class="line"></span><br><span class="line">#【1】创建原始数据，及要训练的数据</span><br><span class="line">x_data = np.linspace(-1,1,300)[:, np.newaxis]</span><br><span class="line">noise = np.random.normal(0, 0.05, x_data.shape)</span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise</span><br><span class="line"></span><br><span class="line">#【2】定义节点准备接收数据</span><br><span class="line">xs = tf.placeholder(tf.float32, [None, 1])</span><br><span class="line">ys = tf.placeholder(tf.float32, [None, 1])</span><br><span class="line"></span><br><span class="line">#【3】定义神经层：隐藏层和预测层</span><br><span class="line">#添加隐藏层，输入值是 xs，在隐藏层有 10 个神经元  </span><br><span class="line">l1 = add_layer(xs, 1, 10, activation_function=tf.nn.relu)</span><br><span class="line">#添加输出层，输入值是隐藏层 l1，在预测层输出 1 个结果</span><br><span class="line">prediction = add_layer(l1, 10, 1, activation_function=None)</span><br><span class="line"></span><br><span class="line">#【4】定义损失函数，误差的均方差</span><br><span class="line">loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),</span><br><span class="line">                     reduction_indices=[1]))</span><br><span class="line">#【5】选择 optimizer 使 loss 达到最小，选择梯度下降的方法训练数据</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br><span class="line"></span><br><span class="line">#【6】初始化数据，tf 的必备步骤，主要声明了变量，就必须初始化才能用</span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">#【7】创建Session会话。启动图</span><br><span class="line">sess = tf.Session()</span><br><span class="line">#上面定义的都没有运算，直到 sess.run 才会开始运算</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line"># 打印数据</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">ax.scatter(x_data, y_data)</span><br><span class="line">plt.ion()</span><br><span class="line">plt.show()#若预测曲线出不来请将其注释</span><br><span class="line"></span><br><span class="line">#【8】训练模型的到结果，迭代，反复执行上面的最小化损失函数这一操作，拟合数据</span><br><span class="line">for i in range(1000):</span><br><span class="line">    #train_step 和 loss 都是由 placeholder 定义的运算，所以这里要用 feed 传入参数</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:</span><br><span class="line">        # to visualize the result and improvement</span><br><span class="line">        try:</span><br><span class="line">            ax.lines.remove[lines[0]] </span><br><span class="line">        except Exception:</span><br><span class="line">            pass</span><br><span class="line">prediction_value = sess.run(prediction, feed_dict=&#123;xs: x_data&#125;)</span><br><span class="line"># plot the prediction</span><br><span class="line">lines = ax.plot(x_data, prediction_value, &apos;r-&apos;, lw=5)</span><br><span class="line">plt.pause(0.1)</span><br></pre></td></tr></table></figure></p>
+<p>结果如下如所示。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图9.png" alt="这里写图片描述"></p>
+<center>图9</center>
+
+<p>可以看出实际数据和拟合数据有些出入，这就是overfitting的问题，也就是过度拟合问题，在TensorFlow中，有一个很好的工具, 叫做dropout, 只需要给予它一个不被 drop 掉的百分比，就能很好地降低 overfitting。关于Dropout的使用笔者会在后文介绍。</p>
+<p>注意对于隐藏层，将激活函数换成 tanh，得到的鱼刺曲线将会更加平滑。当然有兴趣的朋友可以换成其他激活函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l1 = add_layer(xs, 1, 10, activation_function=tf.nn.tanh)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图10.png" alt="这里写图片描述"></p>
+<center>图10 tanh激活函数</center>
+
+
+<h2 id="4-3保存和加载"><a href="#4-3保存和加载" class="headerlink" title="4.3保存和加载"></a>4.3保存和加载</h2><p>训练好了一个神经网络后，可以保存起来下次使用时再次加载。不管是保存还是加载，都需要初始化一个保存变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">saver = tf.train.Saver()</span><br></pre></td></tr></table></figure></p>
+<p><strong>    保存数据</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save_path = saver.save(sess, &quot;my_net/save_net.ckpt&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>【完整代码参看附件test3_1_saver_save.py】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># 建立神经网络当中的 W 和 b, 并初始化变量.</span><br><span class="line">W = tf.Variable([[1,2,3],[3,4,5]], dtype=tf.float32, name=&apos;weights&apos;)</span><br><span class="line">b = tf.Variable([[1,2,3]], dtype=tf.float32, name=&apos;biases&apos;)</span><br><span class="line"></span><br><span class="line">#init= tf.initialize_all_variables()#新版的已经废弃</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line"></span><br><span class="line"># 建立一个 tf.train.Saver() 用来保存, 提取变量. 再创建一个名为my_net的文件夹, </span><br><span class="line"># 用这个 saver 来保存变量到这个目录 &quot;my_net/save_net.ckpt&quot;.</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">   sess.run(init)</span><br><span class="line">   save_path = saver.save(sess, &quot;my_net/save_net.ckpt&quot;)</span><br><span class="line">   print(&quot;Save to path: &quot;, save_path)</span><br></pre></td></tr></table></figure></p>
+<p>成功运行后，会生成下文件。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图11.png" alt="这里写图片描述"></p>
+  <center>图11  </center>
+
+<p>接下来就是加载已经保存的数据及模型了。</p>
+<p>【注意】在上面保存完了模型之后。应该把 kernel restart 之后才能使用下面的模型导入。否则会因为两次命名 “v1” 而导致名字错误。</p>
+<p><img src="/2018/12/05/TensorFlow/第4章 搭建神经网络/图12.png" alt="这里写图片描述"></p>
+  <center>图12  </center>
+
+<p><strong>    加载数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">saver.restore(sess, &quot;my_net/save_net.ckpt&quot;)</span><br></pre></td></tr></table></figure>
+<p>【完整代码参看附件test3_2_saver_save.py】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># 建立零时的W 和 b容器. 找到文件目录, 并用saver.restore()我们放在这个目录的变量.</span><br><span class="line">W = tf.Variable(np.arange(6).reshape((2, 3)), dtype=tf.float32, name=&quot;weights&quot;)</span><br><span class="line">b = tf.Variable(np.arange(3).reshape((1, 3)), dtype=tf.float32, name=&quot;biases&quot;)</span><br><span class="line"></span><br><span class="line"># not need init step</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line"># 用 saver 从路径中将 save_net.ckpt 保存的 W 和 b restore 进来</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, &quot;my_net/save_net.ckpt&quot;)</span><br><span class="line">    print(&quot;weights:&quot;, sess.run(W))</span><br><span class="line">    print(&quot;biases:&quot;, sess.run(b))</span><br></pre></td></tr></table></figure></p>
+<p>Tensorflow 现在只能保存 variables，还不能保存整个神经网络的框架，所以再使用的时候，需要重新定义框架，然后把 variables 放进去学习。</p>
+<p><strong>本章中TensorFlow中API版本容错</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#writer = tf.train.SummaryWriter(&quot;logs/&quot;, sess.graph)#新版的TensorFlow已经弃用</span><br><span class="line">writer = tf.summary.FileWriter(&quot;logs/&quot;,sess.graph)#加载文件</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#tf.histogram_summary(layer_name + &apos;/weights&apos;, Weights)#新版已经废弃</span><br><span class="line">tf.summary.histogram(layer_name + &apos;/weights&apos;, Weights)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#tf.scalar_summary(&apos;loss&apos;, loss)#新版已经废弃</span><br><span class="line">tf.summary.scalar(&apos;loss&apos;, loss)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#merged = tf.merge_all_summaries()#新版已经废弃</span><br><span class="line">merged = tf.summary.merge_all()</span><br></pre></td></tr></table></figure>
+<p><strong>本章参考代码</strong><br><a href="https://github.com/Ouxiaolong/TensorFlow/tree/master/4%20%E6%90%AD%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">点击进入</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/TensorFlow/第3章 TensorFlow入门/" rel="next" title="《人工智能-TensorFlow开发笔记》第3章 TensorFlow入门">
+                <i class="fa fa-chevron-left"></i> 《人工智能-TensorFlow开发笔记》第3章 TensorFlow入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/TensorFlow/第5章 Tensorboard/" rel="prev" title="《人工智能-TensorFlow开发笔记》第5章 Tensorboard">
+                《人工智能-TensorFlow开发笔记》第5章 Tensorboard <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzMzMC8xMzg2NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BruceOu">
+            
+              <p class="site-author-name" itemprop="name">BruceOu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ouxiaolong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u013162035" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.bruceou.cn/" target="_blank" title="BruceOu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>BruceOu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/Bruceoxl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://bruceou.coding.me/" title="BruceOu的Coding博客" target="_blank">BruceOu的Coding博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1神经网络基本概念"><span class="nav-number">1.</span> <span class="nav-text">4.1神经网络基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2搭建神经网络的基本流程"><span class="nav-number">2.</span> <span class="nav-text">4.2搭建神经网络的基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3保存和加载"><span class="nav-number">3.</span> <span class="nav-text">4.3保存和加载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018-06 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BruceOu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
